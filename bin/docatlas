@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# DocAtlas CLI — https://github.com/JeeEko/DocAtlas
+set -euo pipefail
+
+TOOLKIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+VERSION_FILE="${TOOLKIT_ROOT}/VERSION"
+
+show_help() {
+  cat <<'EOF'
+DocAtlas — Learn the project. Write it down. Keep it updated.
+
+Usage:
+  docatlas bootstrap [options]   Scaffold documentation in the current directory
+  docatlas drift [options]     Check for documentation drift
+  docatlas version               Show toolkit version
+  docatlas help                  Show this message
+
+Bootstrap options (passed to bootstrap.sh):
+  --minimal              Copy only core docs
+  --with-governance      Include GOVERNANCE templates
+  --force                Overwrite existing DocAtlas files
+  --journey-name NAME    Set the project name in generated docs
+
+Drift options:
+  --strict               Exit with error if drift is found
+
+Examples:
+  docatlas bootstrap --journey-name "My App"
+  docatlas bootstrap --minimal --force
+  docatlas drift
+  docatlas drift --strict
+
+More info: https://github.com/JeeEko/DocAtlas
+EOF
+}
+
+cmd_version() {
+  if [[ -f "${VERSION_FILE}" ]]; then
+    cat "${VERSION_FILE}"
+  else
+    echo "unknown"
+    exit 1
+  fi
+}
+
+cmd_bootstrap() {
+  exec "${TOOLKIT_ROOT}/bootstrap.sh" "$@"
+}
+
+cmd_drift() {
+  exec "${TOOLKIT_ROOT}/scripts/check-doc-drift.sh" "$@"
+}
+
+main() {
+  local cmd="${1:-help}"
+  shift || true
+
+  case "${cmd}" in
+    bootstrap)
+      cmd_bootstrap "$@"
+      ;;
+    drift)
+      cmd_drift "$@"
+      ;;
+    version|-v|--version)
+      cmd_version
+      ;;
+    help|-h|--help)
+      show_help
+      ;;
+    *)
+      echo "docatlas: unknown command '${cmd}'" >&2
+      echo "Run 'docatlas help' for usage." >&2
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"

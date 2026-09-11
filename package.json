@@ -1,0 +1,39 @@
+{
+  "name": "docatlas",
+  "version": "1.0.0",
+  "description": "Learn the project. Write it down. Keep it updated.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeeEko/DocAtlas.git"
+  },
+  "homepage": "https://github.com/JeeEko/DocAtlas",
+  "bugs": {
+    "url": "https://github.com/JeeEko/DocAtlas/issues"
+  },
+  "license": "MIT",
+  "bin": {
+    "docatlas": "./bin/docatlas"
+  },
+  "keywords": [
+    "documentation",
+    "onboarding",
+    "drift-detection",
+    "developer-tools"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "bootstrap.sh",
+    "install.sh",
+    "templates/",
+    "scripts/",
+    "prompts/",
+    "runners/",
+    "GOVERNANCE/",
+    "docs/",
+    "docatlas.manifest.yaml",
+    "VERSION"
+  ]
+}

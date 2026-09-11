@@ -1,0 +1,68 @@
+# DocAtlas toolkit manifest
+# https://github.com/JeeEko/DocAtlas
+
+name: DocAtlas
+version: "1.0.0"
+tagline: "Learn the project. Write it down. Keep it updated."
+repository: https://github.com/JeeEko/DocAtlas
+
+cli:
+  binary: bin/docatlas
+  commands:
+    - bootstrap
+    - drift
+    - version
+    - help
+
+bootstrap:
+  script: bootstrap.sh
+  flags:
+    - name: minimal
+      description: Copy only core documentation files
+    - name: with-governance
+      description: Include GOVERNANCE templates in the target repo
+    - name: force
+      description: Overwrite existing DocAtlas-managed files
+    - name: journey-name
+      description: Project name written into generated docs
+      type: string
+
+templates:
+  root:
+    - AGENTS.md
+    - .docatlas.json
+  docs:
+    - docs/ARCHITECTURE.md
+    - docs/ONBOARDING.md
+    - docs/RUNBOOK.md
+    - docs/GLOSSARY.md
+  cursor:
+    - .cursor/rules/docatlas-core.mdc
+    - .cursor/rules/docatlas-docs.mdc
+    - .cursor/skills/docatlas-discovery/SKILL.md
+  github:
+    - .github/pull_request_template.md
+    - .github/workflows/docatlas-drift-report.yml
+
+governance:
+  optional: true
+  files:
+    - GOVERNANCE/CONFIDENCE_TAGS.md
+    - GOVERNANCE/PR_CHECKLIST.md
+    - GOVERNANCE/WEEKLY_SYNC.md
+    - GOVERNANCE/README.md
+
+scripts:
+  - scripts/check-doc-drift.sh
+  - scripts/install-toolkit.sh
+
+prompts:
+  - prompts/discovery.md
+  - prompts/architecture-capture.md
+  - prompts/onboarding-guide.md
+  - prompts/maintenance-pass.md
+  - prompts/drift-review.md
+
+runners:
+  - runners/cloud-agent-task.md
+  - runners/maintenance-agent-task.md

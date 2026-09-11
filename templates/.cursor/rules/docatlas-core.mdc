@@ -1,0 +1,34 @@
+---
+description: DocAtlas core rules for AI agents in this repository
+globs:
+alwaysApply: true
+---
+
+# DocAtlas core rules
+
+This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentation.
+
+## Before making changes
+
+1. Read `AGENTS.md` for project-specific agent guidance
+2. Check `docs/` for architecture, onboarding, and runbook context
+3. If behavior changes, plan doc updates in the same change
+
+## Documentation standards
+
+- Write in plain English for developers new to this repo
+- Use confidence tags: `[verified]`, `[likely]`, `[uncertain]`, `[planned]`
+- Do not mark content `[verified]` unless confirmed against code or tests
+- Replace `TODO` and `TBD` placeholders when you fill in content
+
+## Drift prevention
+
+- Run `docatlas drift` after doc changes
+- Update `docs/GLOSSARY.md` when introducing new domain terms
+- Keep `docs/RUNBOOK.md` commands copy-paste accurate
+
+## Do not
+
+- Invent features not in the codebase
+- Skip doc updates for user-facing behavior changes
+- Delete existing documentation without team reason

@@ -1,0 +1,42 @@
+---
+description: DocAtlas documentation editing rules
+globs:
+  - docs/**
+  - AGENTS.md
+  - GOVERNANCE/**
+---
+
+# DocAtlas documentation rules
+
+When editing files matched by this rule:
+
+## Structure
+
+- `docs/ARCHITECTURE.md` — system design, components, data flow
+- `docs/ONBOARDING.md` — setup and first-day guide
+- `docs/RUNBOOK.md` — run, deploy, troubleshoot
+- `docs/GLOSSARY.md` — terms and abbreviations
+
+## Writing style
+
+- Short sentences, clear headings, tables for reference data
+- Commands in fenced code blocks — must be runnable as shown
+- Link between docs instead of duplicating content
+
+## Confidence tags
+
+Place at section level:
+
+- `[verified]` — confirmed recently against code or by running steps
+- `[likely]` — based on code reading, not yet tested
+- `[uncertain]` — needs owner follow-up; name owner or link issue
+- `[planned]` — future behavior not yet shipped
+
+## Checklist before finishing
+
+- [ ] No bare `TODO` or `__JOURNEY_NAME__` left without explanation
+- [ ] Commands tested or marked `[uncertain]`
+- [ ] Glossary updated for new terms
+- [ ] `docatlas drift` would pass
+
+Toolkit: https://github.com/JeeEko/DocAtlas

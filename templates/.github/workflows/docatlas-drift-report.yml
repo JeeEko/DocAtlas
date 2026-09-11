@@ -1,0 +1,60 @@
+name: DocAtlas drift report
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.mdc'
+      - 'src/**'
+      - 'lib/**'
+      - 'app/**'
+      - '.docatlas.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for DocAtlas
+        id: check
+        run: |
+          if [[ -f .docatlas.json || -f AGENTS.md ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run drift check
+        if: steps.check.outputs.present == 'true'
+        run: |
+          chmod +x scripts/check-doc-drift.sh 2>/dev/null || true
+          if [[ -x scripts/check-doc-drift.sh ]]; then
+            ./scripts/check-doc-drift.sh --strict
+          else
+            echo "Running inline drift checks..."
+            issues=0
+            for f in AGENTS.md docs/ARCHITECTURE.md docs/ONBOARDING.md docs/RUNBOOK.md docs/GLOSSARY.md; do
+              if [[ ! -f "$f" ]]; then
+                echo "[drift] missing: $f"
+                issues=$((issues + 1))
+              fi
+            done
+            if grep -rE 'TODO|TBD|__JOURNEY_NAME__|PLACEHOLDER' docs/ AGENTS.md 2>/dev/null; then
+              echo "[drift] unresolved placeholders found"
+              issues=$((issues + 1))
+            fi
+            if [[ "$issues" -gt 0 ]]; then
+              exit 1
+            fi
+            echo "[drift] no issues found"
+          fi
+
+      - name: Skip (DocAtlas not bootstrapped)
+        if: steps.check.outputs.present != 'true'
+        run: echo "DocAtlas not detected — skipping drift check"

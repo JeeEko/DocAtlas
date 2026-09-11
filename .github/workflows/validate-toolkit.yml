@@ -1,0 +1,101 @@
+name: Validate DocAtlas toolkit
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files
+        run: |
+          required=(
+            README.md
+            VERSION
+            CHANGELOG.md
+            docatlas.manifest.yaml
+            bootstrap.sh
+            install.sh
+            package.json
+            bin/docatlas
+            docs/TEAM_SETUP.md
+            GOVERNANCE/README.md
+            scripts/check-doc-drift.sh
+            scripts/install-toolkit.sh
+            templates/AGENTS.md
+            templates/.docatlas.json
+            templates/docs/ARCHITECTURE.md
+            prompts/discovery.md
+            runners/cloud-agent-task.md
+          )
+          missing=0
+          for f in "${required[@]}"; do
+            if [[ ! -e "$f" ]]; then
+              echo "missing: $f"
+              missing=$((missing + 1))
+            fi
+          done
+          if [[ "$missing" -gt 0 ]]; then
+            exit 1
+          fi
+          echo "all required files present"
+
+      - name: Verify executables
+        run: |
+          for f in bootstrap.sh install.sh bin/docatlas scripts/check-doc-drift.sh scripts/install-toolkit.sh; do
+            test -x "$f" || { echo "not executable: $f"; exit 1; }
+          done
+          echo "executables OK"
+
+      - name: Verify VERSION matches package.json
+        run: |
+          v=$(cat VERSION | tr -d '[:space:]')
+          pv=$(node -p "require('./package.json').version")
+          if [[ "$v" != "$pv" ]]; then
+            echo "VERSION ($v) != package.json ($pv)"
+            exit 1
+          fi
+          echo "version OK: $v"
+
+      - name: CLI help and version
+        run: |
+          ./bin/docatlas help
+          ./bin/docatlas version
+
+      - name: Bootstrap smoke test
+        run: |
+          tmp=$(mktemp -d)
+          cd "$tmp"
+          "$GITHUB_WORKSPACE/bootstrap.sh" --journey-name "Smoke Test"
+          test -f AGENTS.md
+          test -f .docatlas.json
+          test -f docs/ARCHITECTURE.md
+          grep -q "Smoke Test" AGENTS.md
+          echo "bootstrap smoke test passed"
+
+      - name: Minimal bootstrap smoke test
+        run: |
+          tmp=$(mktemp -d)
+          cd "$tmp"
+          "$GITHUB_WORKSPACE/bootstrap.sh" --minimal --journey-name "Minimal Test"
+          test -f AGENTS.md
+          test -f .docatlas.json
+          test ! -f docs/ARCHITECTURE.md
+          echo "minimal bootstrap smoke test passed"
+
+      - name: Governance bootstrap smoke test
+        run: |
+          tmp=$(mktemp -d)
+          cd "$tmp"
+          "$GITHUB_WORKSPACE/bootstrap.sh" --with-governance --journey-name "Gov Test"
+          test -f GOVERNANCE/README.md
+          echo "governance bootstrap smoke test passed"
