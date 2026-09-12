@@ -24,6 +24,9 @@ jobs:
           test -f templates/docs/ONBOARDING.md
           echo "Required files OK"
 
+      - name: Test parser coverage (>= 90%)
+        run: node scripts/test-parsers.mjs
+
       - name: Test docatlas init on temp project
         run: |
           mkdir -p /tmp/test-app

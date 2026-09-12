@@ -80,7 +80,7 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 | Command | Step |
 |---------|------|
 | `docatlas init` | Add docs + first draft |
-| `docatlas refine` | Trace user flow → `doc-atlas/docs/JOURNEY-*.md` |
+| `docatlas refine` | Trace routes with framework parsers (target ≥90% coverage) |
 | `docatlas drift` | Verify docs complete |
 
 ---

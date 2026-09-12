@@ -92,6 +92,27 @@ All DocAtlas files live under **`doc-atlas/`** in your project.
 
 ## Update DocAtlas
 
+GitHub installs **do not support** `npm update`. Re-install to pull the latest:
+
 ```bash
-npm update -g github:JeeEko/DocAtlas
+npm install -g github:JeeEko/DocAtlas
+docatlas version
 ```
+
+Install a specific release:
+
+```bash
+npm install -g github:JeeEko/DocAtlas#v1.7.0
+docatlas version
+```
+
+If you see `npm error EUPDATEARGS` or `npm update undefined`, you ran `npm update` — use `npm install -g` above instead.
+
+### Windows (cmd or PowerShell)
+
+```cmd
+npm install -g github:JeeEko/DocAtlas
+docatlas version
+```
+
+Expected: `1.7.0` (or newer). Close and reopen the terminal if `docatlas` is not found.

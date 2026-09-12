@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.0 — 2026-09-12
+
+- **Framework parsers** for Next.js (pages + route handlers), NestJS, Express/Hono/Fastify/Koa, React Router, Vue Router, OpenAPI
+- **90% trace coverage target** — refine maps all detected routes to journey steps; reports coverage %
+- Route inventory lists parser source and confidence per route
+- `docatlas refine --min-coverage 90` (default)
+
 ## 1.6.0 — 2026-09-12
 
 - **Project-agnostic refine** — removed e-commerce, auth, and shop-specific flow templates
