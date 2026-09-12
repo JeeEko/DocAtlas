@@ -77,7 +77,7 @@ Reload the Cursor window if slash commands do not appear immediately.
 
 ### After init (Cursor or terminal)
 
-**Cursor slash commands** (in `.cursor/commands/` after init):
+**Slash commands** — what you type in chat (`/docatlas-*`):
 
 | Command | Action |
 |---------|--------|
@@ -85,6 +85,8 @@ Reload the Cursor window if slash commands do not appear immediately.
 | `/docatlas-refine` | Trace routes in code (automated) |
 | `/docatlas-discovery` | Deep-dive — fill in docs from code |
 | `/docatlas-drift` | Check documentation |
+
+**Agent skills** — `docatlas-skill-*` in `.cursor/skills/` (for the agent, not typed by you).
 
 The agent runs `docatlas` in your workspace terminal.
 

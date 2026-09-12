@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.1 — 2026-09-12
+
+- Rename agent skills to **`docatlas-skill-*`** (distinct from slash commands `/docatlas-*`)
+- Commands and skills document their pairing in file headers
+
 ## 1.8.0 — 2026-09-12
 
 - **New:** `doc-atlas/docs/BUSINESS.md` — problem, users, capabilities, business rules
