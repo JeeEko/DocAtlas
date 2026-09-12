@@ -34,7 +34,7 @@ Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.curso
 ## Rules for agents
 
 1. **Read before you change** — `doc-atlas/docs/START_HERE.md` first
-2. **Prefer DocAtlas CLI** — run `docatlas refine` / `docatlas drift` instead of reinventing long discovery prompts
+2. **Prefer DocAtlas CLI** — run `docatlas refine` / `docatlas drift`; discovery is from repo structure, not domain templates
 3. **Update docs in the same PR** — Code and docs stay in sync
 4. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]` (see `doc-atlas/GOVERNANCE/CONFIDENCE_TAGS.md`)
 5. **Plain language** — Write for a smart developer new to this repo

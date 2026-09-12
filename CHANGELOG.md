@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.6.0 — 2026-09-12
+
+- **Project-agnostic refine** — removed e-commerce, auth, and shop-specific flow templates
+- Journey discovery uses **route structure only** (pages + API path groups)
+- Journey names derived from **project name**, not domain keywords
+- Added [GOVERNANCE/DESIGN_PRINCIPLES.md](GOVERNANCE/DESIGN_PRINCIPLES.md)
+- Removed shoplite-specific scan paths (`shop-api`, `MockCheckout`, etc.)
+
+## 1.5.0 — 2026-09-12
+
+- **`docatlas refine` scans the whole project**, not just e-commerce or login
+- Detects auth-app, e-commerce, or full route discovery modes
+- Adds **Route inventory** to ARCHITECTURE (web pages + API routes)
+- Merges glossary terms instead of replacing the whole file
+- Broader API/page detection (Express router, Pages router)
+
 ## 1.4.0 — 2026-09-12
 
 - **All project docs live under `doc-atlas/`** — docs, governance, `.docatlas.json`, agent guidance

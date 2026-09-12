@@ -6,6 +6,12 @@ Repository: https://github.com/JeeEko/DocAtlas
 
 ---
 
+## Design principles
+
+DocAtlas works on **any project** — discovery comes from repo structure, not domain templates (no hardcoded e-commerce, auth, or shop flows). See [GOVERNANCE/DESIGN_PRINCIPLES.md](GOVERNANCE/DESIGN_PRINCIPLES.md).
+
+---
+
 ## Install once (per machine)
 
 ```bash
