@@ -1,108 +1,88 @@
 ---
 name: docatlas-skill-discovery
-description: DocAtlas discovery workflow — map business contexts, explore codebase, fill accurate docs. Invoked by /docatlas Phase 3. Do not invoke directly; run /docatlas instead.
+description: DocAtlas discovery orchestrator — specialist agents map contexts and fill accurate docs. Invoked by /docatlas Phase 3. Do not invoke directly; run /docatlas instead.
 ---
 
 # DocAtlas discovery workflow
 
 **Phase 3 of the DocAtlas journey (required).** Loaded by `/docatlas` — not a user-facing entry point.
 
-Deep exploration: investigate the project as a whole, validate business context boundaries, and fill documentation with verified detail.
+Orchestrate specialist agents to investigate the project, validate business contexts, and fill documentation with verified detail.
 
 Toolkit: https://github.com/JeeEko/DocAtlas
-
-## When this phase applies
-
-- After init and refine (required loop step)
-- Docs are still templates or mostly `[likely]`
-- A major feature changed architecture or business rules
 
 ## Workflow
 
 ### 1. Orient
 
-Read in order:
+Read:
 
-1. `AGENTS.md` and `doc-atlas/AGENTS.md`
-2. `doc-atlas/.docatlas.json` (note `businessContexts`)
+1. `AGENTS.md`, `doc-atlas/AGENTS.md`, `doc-atlas/docs/AI_CONTEXT.md`
+2. `doc-atlas/.docatlas.json` (`businessContexts`, `docTaxonomy`)
 3. `doc-atlas/docs/business/CONTEXT-MAP.md`
-4. `doc-atlas/docs/BUSINESS.md` (index only — detail lives in context docs)
-5. Existing `doc-atlas/docs/JOURNEY-*.md`, `ARCHITECTURE.md`
-6. README and package/config files
+4. `JOURNEY-*.md`, `ARCHITECTURE.md`
+5. README, package files, CI config
 
-### 2. Investigate the project holistically
+If CONTEXT-MAP is stale: `docatlas map-contexts --force`
 
-Explore the **whole codebase** to understand business areas:
+### 2. Launch specialist agents (parallel where possible)
 
-- Monorepo packages / workspaces — what each area owns
-- `src/domains`, `modules`, `features` folders if present
-- API route prefixes and OpenAPI tags
-- Test suite layout — `tests/billing`, `*.spec.ts` naming
-- README, ADRs, product docs, validation rules, domain models
-- User-facing copy and error messages
+Use `.cursor/agents/`:
 
-**Goal:** confirm, merge, split, or rename contexts in the map. Do not invent domains without evidence.
+| Agent | Output |
+|-------|--------|
+| `docatlas-domain-analyzer` | `business/contexts/*.md`, CONTEXT-MAP, GLOSSARY |
+| `docatlas-integration-analyzer` | `integrations/*.md`, ARCHITECTURE APIs |
+| `docatlas-data-analyzer` | `data/*.md` |
+| `docatlas-system-analyzer` | `system/*.md`, ARCHITECTURE |
+| `docatlas-infra-analyzer` | `system/deployment.md`, RUNBOOK |
 
-If the map is stale (e.g. after major refactor), run:
+Each agent: read-only, evidence paths required, epistemic labels on claims.
 
-```bash
-docatlas map-contexts --force
-```
+### 3. Reconcile
 
-Then edit `CONTEXT-MAP.md` to reflect what you verified.
+- Resolve contradictions between specialists
+- Merge/split/rename contexts in CONTEXT-MAP with evidence
+- Update `businessContexts` in `.docatlas.json`
+- Keep `BUSINESS.md` as short index only
 
-### 3. Update the context map
-
-Edit `doc-atlas/docs/business/CONTEXT-MAP.md`:
-
-- Fix context names and boundaries
-- Document relationships between contexts
-- List open questions where evidence is weak
-- Update `doc-atlas/.docatlas.json` `businessContexts` if you add/remove contexts (keep `doc` paths accurate)
-
-When adding a context manually, copy `business/contexts/_TEMPLATE.md` to `business/contexts/<slug>.md`.
-
-### 4. Fill per-context business docs
-
-For **each** context in the map, update `doc-atlas/docs/business/contexts/<slug>.md`:
-
-| Section | Source |
-|---------|--------|
-| Scope | What this area owns / excludes |
-| Actors | README, auth roles, user types |
-| Capabilities | User-visible outcomes in this area |
-| Business rules | Tests, validation, domain code — cite source |
-| Related journeys | Links to `JOURNEY-*.md` steps |
-| Related technical | Pointers into `ARCHITECTURE.md` |
-
-Then update `doc-atlas/docs/BUSINESS.md` (short index + links only — no long rule tables).
-
-### 5. Fill technical and journey docs
+### 4. Fill remaining docs
 
 | File | Focus |
-|------|-------|
-| `doc-atlas/docs/ARCHITECTURE.md` | Components, data flow — align with contexts |
-| `doc-atlas/docs/ONBOARDING.md` | Setup, first tasks |
-| `doc-atlas/docs/RUNBOOK.md` | Dev, build, deploy, troubleshoot |
-| `doc-atlas/docs/GLOSSARY.md` | Domain terms (cross-link to context docs) |
-| `doc-atlas/docs/JOURNEY-*.md` | Upgrade steps from `[likely]` to verified |
+|------|--------|
+| `ONBOARDING.md` | Setup, first tasks |
+| `JOURNEY-*.md` | Upgrade steps with evidence citations |
+| `decisions/*.md`, `risks/*.md` | Observed decisions and risks (do not fabricate ADRs) |
 
-Use confidence tags (`doc-atlas/GOVERNANCE/CONFIDENCE_TAGS.md`). Only use `[verified]` with evidence.
+### 5. Write AI_CONTEXT.md
 
-### 6. Self-check before Phase 4
+Compact orientation: purpose, context links, journeys, integrations/data summary, constraints, freshness placeholder.
 
-- Every mapped context has a filled doc (no empty TODO sections where evidence exists)
-- No invented business rules — cite README, tests, or code
-- `BUSINESS.md` stays a short index, not a monolith
+### 6. Record freshness
+
+Set in `.docatlas.json`:
+
+- `lastAnalyzedCommit` — `git rev-parse HEAD`
+- `lastAnalyzedAt` — ISO timestamp
+- `lastAnalyzedBranch` — current branch
+
+Update freshness table in `AI_CONTEXT.md`.
+
+### 7. Self-check
+
+- Evidence paths on business rules
+- No INFERRED/UNKNOWN promoted to OBSERVED without evidence
+- Run `docatlas drift` mentally — fix before Phase 4
 
 ## Do not
 
-- Put all business rules in one giant `BUSINESS.md`
-- Skip context mapping — enterprise docs scale by area
-- Mark `[verified]` without evidence
+- Put all rules in one `BUSINESS.md`
+- Invent domains or ADRs
+- Modify application source code
 
 ## Expected outcome
 
-- Validated `CONTEXT-MAP.md` and per-context docs
-- Technical docs aligned with contexts
+- Validated context map + per-context docs
+- `AI_CONTEXT.md` complete
+- Freshness metadata set
 - Ready for Phase 4 — Drift

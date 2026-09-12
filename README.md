@@ -54,7 +54,7 @@ Reload the Cursor window if `/docatlas` does not appear after init.
 
 | Path | Purpose |
 |------|---------|
-| `doc-atlas/docs/` | START_HERE, **BUSINESS** (index), **business/contexts/**, JOURNEY, ARCHITECTURE |
+| `doc-atlas/docs/` | START_HERE, **AI_CONTEXT**, **BUSINESS** (index), **business/contexts/**, JOURNEY, ARCHITECTURE |
 | `doc-atlas/GOVERNANCE/` | PR checklist, confidence tags |
 | `doc-atlas/.docatlas.json` | DocAtlas config |
 | `.cursor/commands/docatlas.md` | **`/docatlas`** — full documentation journey |
@@ -85,11 +85,12 @@ docatlas init  →  docatlas refine  →  /docatlas (discovery phase)  →  doca
 
 See [docs/COMMANDS.md](docs/COMMANDS.md) for the full CLI vs slash command reference.
 
-| **`/docatlas`** | Full journey — init, refine, discovery (context map + fill), drift |
-| `docatlas map-contexts` | Detect business areas and scaffold context docs (CLI) |
-| `docatlas init` | Scaffold only (CLI) |
-| `docatlas refine` | Trace routes only (CLI) |
-| `docatlas drift` | Verify docs (CLI) |
+| **`/docatlas`** | Full journey — init, refine, discovery, drift |
+| `docatlas update` | Git diff → impacted docs (then skill-update in Cursor) |
+| `docatlas doctor` | Verify kit health |
+| `docatlas install-explorer` | IDE viewer for doc-atlas/ |
+| `docatlas init --taxonomy enterprise` | Full architecture doc tree |
+| `docatlas drift --semantic` | Route inventory + freshness checks |
 
 ---
 

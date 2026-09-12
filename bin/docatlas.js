@@ -8,6 +8,9 @@ import { scanProject } from '../lib/scan.js';
 import { draftDocumentation } from '../lib/draft.js';
 import { runRefineCommand } from '../lib/refine-cli.js';
 import { runMapContextsCommand } from '../lib/map-contexts-cli.js';
+import { runUpdateCommand } from '../lib/update-command.js';
+import { runDoctorCommand } from '../lib/doctor.js';
+import { runInstallExplorerCommand } from '../lib/install-explorer.js';
 
 const args = process.argv.slice(2);
 
@@ -19,6 +22,9 @@ USAGE
   docatlas init [options]     Add docs + auto-draft (start here)
   docatlas refine [options]   Trace main user flow in code (step 2)
   docatlas map-contexts       Detect business areas and scaffold context docs
+  docatlas update             Analyze git diff and list docs needing refresh
+  docatlas doctor             Verify DocAtlas kit and required docs
+  docatlas install-explorer   Build and install DocAtlas Explorer VSIX
   docatlas drift [options]    Check for missing or placeholder docs
   docatlas version            Show version
   docatlas help               Show this message
@@ -28,6 +34,7 @@ INIT OPTIONS
   --force                 Re-run even if DocAtlas already exists
   --no-governance         Skip PR checklist and GOVERNANCE folder
   --scaffold-only         Copy templates only (no auto-draft)
+  --taxonomy <tier>       standard (default) or enterprise doc tree
 
 REFINE OPTIONS
   --journey-name <name>   Override journey name (default: from .docatlas.json)
@@ -38,6 +45,7 @@ MAP-CONTEXTS OPTIONS
 
 DRIFT OPTIONS
   --strict                Exit with error if issues found
+  --semantic              Include route inventory and freshness checks
 
 INSTALL (once per machine)
   npm install -g github:JeeEko/DocAtlas
@@ -46,6 +54,7 @@ EXAMPLES
   cd your-project
   docatlas init
   docatlas refine
+  docatlas update           # after code changes — then docatlas-skill-update in Cursor
   /docatlas               # Cursor — full journey (init → refine → discovery → drift)
   docatlas drift
 
@@ -57,10 +66,13 @@ function parseFlags(argv) {
   const flags = {
     force: false,
     strict: false,
+    semantic: false,
     withGovernance: true,
     skipDraft: false,
     journeyName: '',
     minCoverage: 90,
+    taxonomy: 'standard',
+    skipBuild: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -71,6 +83,9 @@ function parseFlags(argv) {
     else if (a === '--scaffold-only') flags.skipDraft = true;
     else if (a === '--journey-name') flags.journeyName = argv[++i] ?? '';
     else if (a === '--min-coverage') flags.minCoverage = Number(argv[++i] ?? 90);
+    else if (a === '--semantic') flags.semantic = true;
+    else if (a === '--taxonomy') flags.taxonomy = argv[++i] ?? 'standard';
+    else if (a === '--skip-build') flags.skipBuild = true;
     else if (a.startsWith('-')) console.error(`Unknown option: ${a}`);
     else positional.push(a);
   }
@@ -102,8 +117,23 @@ async function main() {
       case 'map-contexts':
         runMapContextsCommand(projectRoot, flags);
         break;
+      case 'update':
+        runUpdateCommand(projectRoot);
+        break;
+      case 'doctor': {
+        const code = runDoctorCommand(projectRoot);
+        process.exit(code);
+        break;
+      }
+      case 'install-explorer': {
+        runInstallExplorerCommand({ skipBuild: flags.skipBuild });
+        break;
+      }
       case 'drift': {
-        const { issues, exitCode } = checkDrift(projectRoot, { strict: flags.strict });
+        const { issues, exitCode } = checkDrift(projectRoot, {
+          strict: flags.strict,
+          semantic: flags.semantic,
+        });
         console.log(`[drift] checking ${projectRoot}`);
         if (!issues.length) console.log('[drift] no issues found');
         else {

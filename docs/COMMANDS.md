@@ -42,6 +42,7 @@ Run from your project root after [installing DocAtlas](INSTALL.md).
 | `docatlas init` | Scaffold `doc-atlas/` and copy `/docatlas` + workflow skills |
 | `docatlas refine` | Trace routes with framework parsers; draft journeys |
 | `docatlas map-contexts` | Detect business areas and scaffold context docs |
+| `docatlas update` | Git diff analysis — list docs needing refresh (no LLM) |
 | `docatlas drift` | Check required docs exist and flag gaps |
 | `docatlas version` | Show installed toolkit version |
 | `docatlas help` | Show CLI usage |
@@ -70,8 +71,9 @@ Use CLI steps individually for CI, scripts, or when you only need one automated 
 | `docatlas-skill-refine` | 2 | Run parsers, draft journeys |
 | `docatlas-skill-discovery` | 3 | Explore code, fill accurate docs |
 | `docatlas-skill-drift` | 4 | Verify completeness |
+| `docatlas-skill-update` | — | Incremental refresh after code changes |
 
-These are loaded by `/docatlas`, not typed by users.
+These are loaded by `/docatlas` or invoked for targeted updates — not typed by users as slash commands.
 
 ---
 

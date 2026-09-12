@@ -10,14 +10,25 @@ This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentatio
 
 ## Before making changes
 
-1. Read `AGENTS.md` and `doc-atlas/docs/START_HERE.md`
-2. Check `doc-atlas/docs/` for architecture, onboarding, and runbook context
-3. If behavior changes, plan doc updates in the same change
+1. Read `doc-atlas/docs/AI_CONTEXT.md` if it exists (compact orientation)
+2. Read `AGENTS.md` and `doc-atlas/docs/START_HERE.md`
+3. Check `doc-atlas/docs/` for architecture, onboarding, and runbook context
+4. If behavior changes, plan doc updates in the same change
+
+## Architecture-sensitive work
+
+For changes involving APIs, contracts, events, databases, integrations, infrastructure, auth, deployment, or business flows:
+
+1. Read `doc-atlas/docs/AI_CONTEXT.md` and relevant context/journey docs
+2. Treat source code as authoritative if docs conflict
+3. After material changes, invoke or recommend **`docatlas-skill-update`** before finishing
 
 ## Documentation standards
 
 - Write in plain English for developers new to this repo
 - Use confidence tags: `[verified]`, `[likely]`, `[uncertain]`, `[planned]`
+- Use epistemic labels: OBSERVED, DECLARED, INFERRED, UNKNOWN
+- Cite evidence paths: `src/file.ts#L10`
 - Do not mark content `[verified]` unless confirmed against code or tests
 - Replace `TODO` and `TBD` placeholders when you fill in content
 
@@ -32,3 +43,4 @@ This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentatio
 - Invent features not in the codebase
 - Skip doc updates for user-facing behavior changes
 - Delete existing documentation without team reason
+- Promote INFERRED or UNKNOWN claims to OBSERVED without evidence

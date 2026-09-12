@@ -2,5 +2,9 @@
   "toolkitVersion": "1.0.0",
   "journeyName": "__JOURNEY_NAME__",
   "bootstrappedAt": "",
+  "docTaxonomy": "standard",
+  "lastAnalyzedCommit": null,
+  "lastAnalyzedAt": null,
+  "lastAnalyzedBranch": null,
   "repository": "https://github.com/JeeEko/DocAtlas"
 }

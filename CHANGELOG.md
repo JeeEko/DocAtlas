@@ -1,5 +1,32 @@
 # Changelog
 
+## 4.0.0 — 2026-09-12
+
+- **DocAtlas Explorer** — scaffold VS Code/Cursor extension under `packages/explorer/` (viewer for `doc-atlas/docs/`)
+- **`docatlas install-explorer`** — build and install extension from toolkit
+- **Hybrid refine** — seeds `integrations/internal-apis.md` and `system/component-map.md` from parsers
+- [docs/PUBLISHING.md](docs/PUBLISHING.md) — npm release checklist
+- npm-first install documented in [docs/INSTALL.md](docs/INSTALL.md)
+
+## 3.1.0 — 2026-09-12
+
+- **Discovery subagents** — five specialists in `.cursor/agents/docatlas-*-analyzer.md`
+- **Enterprise taxonomy** — `--taxonomy enterprise` adds system, integrations, data, decisions, risks folders
+- **`docatlas doctor`** — kit health check
+- **Semantic drift** — `docatlas drift --semantic` compares route inventory to code
+- **Context ↔ journey links** in `.docatlas.json` after refine
+- [docs/MIGRATION.md](docs/MIGRATION.md)
+
+## 3.0.0 — 2026-09-12
+
+- **Epistemic labels** — OBSERVED, DECLARED, INFERRED, UNKNOWN alongside confidence tags ([GOVERNANCE/EPISTEMIC_LABELS.md](GOVERNANCE/EPISTEMIC_LABELS.md))
+- **Evidence citations** — standard `path/file.ext#L10` format ([GOVERNANCE/EVIDENCE_FORMAT.md](GOVERNANCE/EVIDENCE_FORMAT.md))
+- **`AI_CONTEXT.md`** — compact agent orientation file; required by drift
+- **Freshness metadata** — `lastAnalyzedCommit`, `lastAnalyzedAt`, `lastAnalyzedBranch` in `.docatlas.json`
+- **`docatlas update`** — git diff analysis + impacted doc list (no LLM)
+- **`docatlas-skill-update`** — incremental doc refresh after code changes
+- `/docatlas` orchestrator detects full journey vs update path
+
 ## 2.1.0 — 2026-09-12
 
 - **Business context mapping** — `docatlas map-contexts` detects areas from packages, domain folders, and API prefixes

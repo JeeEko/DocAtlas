@@ -11,7 +11,17 @@ Do **not** skip phases. Do **not** invoke workflow skills directly — this comm
 1. Run `docatlas version` in the workspace root.
 2. If missing, tell the user once: `npm install -g github:JeeEko/DocAtlas`
 
-## Detect starting phase
+## Choose full journey vs incremental update
+
+| Situation | Action |
+|-----------|--------|
+| Fresh project or discovery never done | Full journey below (Phases 1–4) |
+| Docs filled in, code changed since `lastAnalyzedCommit` | Run `docatlas update` in terminal, then **`.cursor/skills/docatlas-skill-update/SKILL.md`** |
+| User asks for targeted refresh only | Update skill only — skip full journey |
+
+Check `doc-atlas/.docatlas.json` for `lastAnalyzedCommit` and `doc-atlas/docs/AI_CONTEXT.md` freshness table.
+
+## Detect starting phase (full journey)
 
 | State | Start at |
 |-------|----------|
@@ -38,7 +48,9 @@ Read and follow: `.cursor/skills/docatlas-skill-refine/SKILL.md`
 
 Read and follow: `.cursor/skills/docatlas-skill-discovery/SKILL.md`
 
-Never skip this phase. Auto-drafts and refine output stay `[likely]` until discovery completes.
+Never skip this phase on first run. Auto-drafts and refine output stay `[likely]` until discovery completes.
+
+At end of discovery: set `lastAnalyzedCommit`, `lastAnalyzedAt`, `lastAnalyzedBranch` in `.docatlas.json` and refresh `AI_CONTEXT.md` freshness table.
 
 ### Phase 4 — Drift
 
@@ -50,11 +62,12 @@ Summarize for the user:
 
 - Which phases ran
 - Journey coverage (from refine) and drift result
+- Freshness metadata (commit, date)
 - Remaining gaps or open questions
-- Point to `doc-atlas/docs/START_HERE.md` for day-to-day use
+- Point to `doc-atlas/docs/AI_CONTEXT.md` and `START_HERE.md`
 
 ## Do not
 
-- Invoke `docatlas-skill-*` skills directly without running this full journey (unless user explicitly asks for a single phase in terminal)
-- Skip discovery
-- Mark docs `[verified]` without evidence
+- Invoke `docatlas-skill-*` skills directly without running this full journey (unless user explicitly asks for update-only or a single CLI phase)
+- Skip discovery on first documentation pass
+- Mark docs `[verified]` without evidence paths

@@ -36,6 +36,15 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 
 Business docs **split by mapped context** — not one monolithic file. `docatlas map-contexts` suggests areas from repo structure; discovery validates and fills them.
 
+## 9. Documentation taxonomy tiers
+
+| Tier | Use |
+|------|-----|
+| `standard` | Default — core docs + business contexts |
+| `enterprise` | Adds `system/`, `integrations/`, `data/`, `decisions/`, `risks/` |
+
+Set via `docatlas init --taxonomy enterprise` or `docTaxonomy` in `.docatlas.json`.
+
 ## 6. Minimal assumptions about stack
 
 - Detect stack from `package.json` and apply **framework parsers** (Next.js, NestJS, Express/Hono/Fastify, React Router, OpenAPI, etc.).

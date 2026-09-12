@@ -2,16 +2,20 @@
 # https://github.com/JeeEko/DocAtlas
 
 name: DocAtlas
-version: "1.0.0"
+version: "4.0.0"
 tagline: "Learn the project. Write it down. Keep it updated."
 repository: https://github.com/JeeEko/DocAtlas
 
 cli:
   binary: bin/docatlas
   commands:
-    - bootstrap
-    - drift
+    - init
+    - refine
     - map-contexts
+    - update
+    - doctor
+    - drift
+    - install-explorer
     - version
     - help
 
@@ -27,12 +31,16 @@ bootstrap:
     - name: journey-name
       description: Project name written into generated docs
       type: string
+    - name: taxonomy
+      description: standard or enterprise documentation tree
+      type: string
 
 templates:
   root:
     - AGENTS.md
     - .docatlas.json
   docs:
+    - docs/AI_CONTEXT.md
     - docs/ARCHITECTURE.md
     - docs/BUSINESS.md
     - docs/business/CONTEXT-MAP.md
@@ -40,14 +48,34 @@ templates:
     - docs/ONBOARDING.md
     - docs/RUNBOOK.md
     - docs/GLOSSARY.md
+  docs_enterprise:
+    - docs/system/overview.md
+    - docs/system/deployment.md
+    - docs/system/component-map.md
+    - docs/integrations/internal-apis.md
+    - docs/integrations/external-systems.md
+    - docs/integrations/events.md
+    - docs/data/databases.md
+    - docs/data/caching.md
+    - docs/data/ownership.md
+    - docs/decisions/observed-decisions.md
+    - docs/decisions/undocumented-decisions.md
+    - docs/risks/architecture-risks.md
+    - docs/risks/technical-debt.md
   cursor:
-    - .cursor/rules/docatlas-core.mdc
-    - .cursor/rules/docatlas-docs.mdc
     - .cursor/commands/docatlas.md
     - .cursor/skills/docatlas-skill-init/SKILL.md
     - .cursor/skills/docatlas-skill-refine/SKILL.md
     - .cursor/skills/docatlas-skill-discovery/SKILL.md
     - .cursor/skills/docatlas-skill-drift/SKILL.md
+    - .cursor/skills/docatlas-skill-update/SKILL.md
+    - .cursor/agents/docatlas-domain-analyzer.md
+    - .cursor/agents/docatlas-integration-analyzer.md
+    - .cursor/agents/docatlas-data-analyzer.md
+    - .cursor/agents/docatlas-system-analyzer.md
+    - .cursor/agents/docatlas-infra-analyzer.md
+    - .cursor/rules/docatlas-core.mdc
+    - .cursor/rules/docatlas-docs.mdc
   github:
     - .github/pull_request_template.md
     - .github/workflows/docatlas-drift-report.yml
@@ -56,21 +84,19 @@ governance:
   optional: true
   files:
     - GOVERNANCE/CONFIDENCE_TAGS.md
+    - GOVERNANCE/EPISTEMIC_LABELS.md
+    - GOVERNANCE/EVIDENCE_FORMAT.md
     - GOVERNANCE/PR_CHECKLIST.md
     - GOVERNANCE/WEEKLY_SYNC.md
+    - GOVERNANCE/DESIGN_PRINCIPLES.md
     - GOVERNANCE/README.md
 
 scripts:
   - scripts/check-doc-drift.sh
   - scripts/install-toolkit.sh
+  - scripts/test-parsers.mjs
+  - scripts/test-business-contexts.mjs
+  - scripts/test-freshness.mjs
 
-prompts:
-  - prompts/discovery.md
-  - prompts/architecture-capture.md
-  - prompts/onboarding-guide.md
-  - prompts/maintenance-pass.md
-  - prompts/drift-review.md
-
-runners:
-  - runners/cloud-agent-task.md
-  - runners/maintenance-agent-task.md
+packages:
+  - packages/explorer

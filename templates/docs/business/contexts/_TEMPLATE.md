@@ -21,9 +21,9 @@
 
 ## Business rules [uncertain]
 
-| Rule | Source | Confidence |
-|------|--------|------------|
-| TODO | TODO | [uncertain] |
+| Rule | Evidence | Epistemic | Confidence |
+|------|----------|-----------|------------|
+| TODO | `path/to/file.ext#L1` | UNKNOWN | [uncertain] |
 
 ## Related journeys [uncertain]
 

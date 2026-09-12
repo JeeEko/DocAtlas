@@ -34,6 +34,7 @@ We believe Redis is used for session storage — needs confirmation.
 - `[uncertain]` sections must have an owner named in the doc or a linked issue
 - Promote `[likely]` to `[verified]` after someone runs the steps and confirms
 - Remove `[planned]` tags once the feature ships and docs are updated
+- Pair confidence tags with epistemic labels — see [EPISTEMIC_LABELS.md](EPISTEMIC_LABELS.md)
 
 ## In pull requests
 

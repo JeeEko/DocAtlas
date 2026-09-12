@@ -10,7 +10,8 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 | File | Purpose |
 |------|---------|
-| `doc-atlas/docs/START_HERE.md` | **Read first** — 2-minute orientation |
+| `doc-atlas/docs/AI_CONTEXT.md` | **Agents read first** — compact orientation |
+| `doc-atlas/docs/START_HERE.md` | Human onboarding — 2-minute orientation |
 | `doc-atlas/docs/BUSINESS.md` | **Why** — executive index (links to contexts) |
 | `doc-atlas/docs/business/CONTEXT-MAP.md` | Detected business areas and boundaries |
 | `doc-atlas/docs/business/contexts/*.md` | Per-area capabilities, actors, rules |

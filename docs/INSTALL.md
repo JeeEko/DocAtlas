@@ -8,20 +8,16 @@ Requires **Node.js 18+**.
 
 ## Global install (recommended)
 
-```bash
-npm install -g github:JeeEko/DocAtlas
-```
-
-Verify:
-
-```bash
-docatlas version
-```
-
-When published on npm:
+When published on npm (v4+):
 
 ```bash
 npm install -g docatlas
+```
+
+Or from GitHub:
+
+```bash
+npm install -g github:JeeEko/DocAtlas
 ```
 
 ### Windows (PowerShell or cmd)

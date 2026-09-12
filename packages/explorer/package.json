@@ -1,0 +1,38 @@
+{
+  "name": "docatlas-explorer",
+  "displayName": "DocAtlas Explorer",
+  "description": "Browse doc-atlas documentation in VS Code and Cursor",
+  "version": "1.0.0",
+  "publisher": "JeeEko",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "docatlasExplorer",
+          "name": "DocAtlas"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "docatlas.refresh",
+        "title": "DocAtlas: Refresh"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "package": "npm run compile && npx @vscode/vsce package --no-dependencies",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

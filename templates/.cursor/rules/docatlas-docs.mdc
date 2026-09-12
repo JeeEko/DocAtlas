@@ -10,12 +10,19 @@ globs:
 When editing files under `doc-atlas/`:
 
 - Use confidence tags: `[verified]`, `[likely]`, `[uncertain]`, `[planned]`
+- Use epistemic labels on claims: **OBSERVED**, **DECLARED**, **INFERRED** (with High/Medium/Low), **UNKNOWN**
+- Cite evidence as repo-relative paths: `src/file.ts#L10` or `#L10-L20`
+- Do not promote INFERRED or UNKNOWN to OBSERVED without new evidence
 - Keep file paths accurate and copy-pasteable
 - Update related docs when behavior changes
 
+See `doc-atlas/GOVERNANCE/EPISTEMIC_LABELS.md` and `EVIDENCE_FORMAT.md`.
+
 ## File purposes
 
+- `doc-atlas/docs/AI_CONTEXT.md` — compact orientation for agents (read first)
 - `doc-atlas/docs/ARCHITECTURE.md` — system design, components, data flow
+- `doc-atlas/docs/business/contexts/*.md` — per-area business rules and capabilities
 - `doc-atlas/docs/ONBOARDING.md` — setup and first-day guide
 - `doc-atlas/docs/RUNBOOK.md` — run, deploy, troubleshoot
 - `doc-atlas/docs/GLOSSARY.md` — terms and abbreviations
