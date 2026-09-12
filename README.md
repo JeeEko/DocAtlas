@@ -2,75 +2,68 @@
 
 **Learn the project. Write it down. Keep it updated.**
 
-DocAtlas is a documentation toolkit for software teams. It helps you capture how a project really works, keep docs in sync with the code, and onboard new people faster.
+One npm package. One command. DocAtlas adds documentation to your repo and **drafts a first version** from your README and code layout.
 
 Repository: https://github.com/JeeEko/DocAtlas
 
-## What DocAtlas does
+---
 
-- **Bootstrap** — Scaffolds documentation structure in your repo
-- **Drift check** — Finds gaps between code and docs
-- **Governance** — Optional team rituals (PR checklists, weekly syncs, confidence tags)
-- **Cloud agents** — Ready-made tasks for Cursor Cloud Agents
-
-## Quick start
+## Quick start (recommended)
 
 ```bash
-# Clone DocAtlas
-git clone https://github.com/JeeEko/DocAtlas.git
-cd DocAtlas
-
-# Install the CLI
-./install.sh
-
-# Bootstrap docs into your project
-docatlas bootstrap --journey-name "My Project"
+cd your-project
+npx github:JeeEko/DocAtlas init
 ```
 
-Or run bootstrap directly without installing:
+When published to npm:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JeeEko/DocAtlas/main/bootstrap.sh | bash -s -- --journey-name "My Project"
+npx docatlas init
 ```
 
-## CLI commands
+That’s it. Open **`docs/START_HERE.md`** when it finishes.
 
-| Command | Description |
-|---------|-------------|
-| `docatlas bootstrap` | Copy templates into your project |
-| `docatlas drift` | Check for documentation drift |
-| `docatlas version` | Show toolkit version |
-| `docatlas help` | Show usage |
+### Install globally (optional)
 
-## Bootstrap flags
-
-| Flag | Description |
-|------|-------------|
-| `--minimal` | Only core docs, skip extras |
-| `--with-governance` | Include GOVERNANCE files |
-| `--force` | Overwrite existing DocAtlas files |
-| `--journey-name NAME` | Set the project name in generated docs |
-
-## Project layout
-
-```
-DocAtlas/
-├── bin/docatlas          # CLI entry point
-├── bootstrap.sh          # One-shot bootstrap script
-├── install.sh            # Install CLI to your PATH
-├── templates/            # Files copied into target repos
-├── scripts/              # Drift check and install helpers
-├── prompts/              # AI prompts for discovery and maintenance
-├── runners/              # Cloud agent task definitions
-├── GOVERNANCE/           # Optional team process docs
-└── docs/                 # Toolkit documentation
+```bash
+npm install -g docatlas
+cd your-project
+docatlas init
 ```
 
-## Documentation
+Works on **Windows, macOS, and Linux** (Node.js 18+). No Git Bash required.
 
-- [Team setup guide](docs/TEAM_SETUP.md)
-- [Governance overview](GOVERNANCE/README.md)
-- [Cloud agent runner](runners/CLOUD_AGENT.md)
+---
+
+## What `docatlas init` does
+
+1. **Adds** doc files, `AGENTS.md`, Cursor rules, optional PR checklist  
+2. **Drafts** content from your README, `package.json`, and folder structure  
+3. **Guesses** a main user flow name (e.g. checkout) — you can refine later in Cursor  
+
+Guessed content is marked **`[likely]`**. After you run the app, upgrade to **`[verified]`**.
+
+---
+
+## Other commands
+
+| Command | Purpose |
+|---------|---------|
+| `docatlas init` | Set up + auto-draft (start here) |
+| `docatlas drift` | Find missing docs or leftover placeholders |
+| `docatlas init --force` | Re-run on a project that already has DocAtlas |
+| `docatlas init --journey-name "Checkout"` | Pick the main flow name yourself |
+
+---
+
+## After init
+
+1. Read `docs/START_HERE.md`  
+2. Run your app; fix anything wrong in `docs/RUNBOOK.md`  
+3. In Cursor: *“Refine docs for journey X using docatlas-discovery skill”*  
+4. `docatlas drift` before you commit  
+
+---
 
 ## License
 

@@ -1,7 +1,8 @@
 {
   "name": "docatlas",
-  "version": "1.0.0",
-  "description": "Learn the project. Write it down. Keep it updated.",
+  "version": "1.1.0",
+  "description": "One command to add and draft project documentation for developers and AI agents.",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/JeeEko/DocAtlas.git"
@@ -12,21 +13,23 @@
   },
   "license": "MIT",
   "bin": {
-    "docatlas": "./bin/docatlas"
+    "docatlas": "./bin/docatlas.js"
   },
   "keywords": [
     "documentation",
     "onboarding",
     "drift-detection",
-    "developer-tools"
+    "developer-tools",
+    "cursor",
+    "agents"
   ],
   "engines": {
     "node": ">=18"
   },
   "files": [
     "bin/",
+    "lib/",
     "bootstrap.sh",
-    "install.sh",
     "templates/",
     "scripts/",
     "prompts/",
