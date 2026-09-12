@@ -39,8 +39,7 @@ Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.curso
 | 1 | `docatlas init` | CLI — once per project |
 | 2 | `docatlas refine` | CLI — trace routes |
 | 3 | **`/docatlas-discovery`** | **Agent — required quality pass** |
-| 4 | `docatlas drift` | CLI — verify before commit |
-| 5 | commit `doc-atlas/` | Human |
+| 4 | `docatlas drift` | CLI — verify docs complete |
 
 Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until discovery confirms them.
 

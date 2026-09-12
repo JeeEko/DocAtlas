@@ -1,6 +1,6 @@
 ---
 name: docatlas-discovery
-description: Explore this codebase and fill in DocAtlas documentation (ARCHITECTURE, ONBOARDING, RUNBOOK, GLOSSARY). Use when bootstrapping docs, onboarding new developers, or after major feature work. Toolkit https://github.com/JeeEko/DocAtlas
+description: Required step after refine — explore codebase and fill in DocAtlas documentation. Use when the user runs /docatlas-discovery or before drift.
 ---
 
 # DocAtlas discovery

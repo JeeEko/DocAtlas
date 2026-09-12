@@ -23,7 +23,7 @@ Run the **installed** DocAtlas CLI in the project root. Do not use `npx` unless 
 
 3. Tell user the full loop:
 
-   **refine → discovery → drift → commit**
+   **refine → discovery → drift**
 
 4. Point user to `doc-atlas/docs/START_HERE.md` and **`/docatlas-refine`** as next step (not drift yet).
 

@@ -1,5 +1,7 @@
 # DocAtlas discovery
 
+**Required step** in the DocAtlas loop: init → refine → **discovery** → drift.
+
 Deep exploration pass: read the codebase and **fill in** DocAtlas docs with verified detail.
 
 Use this **after** `docatlas init` and usually **after** `docatlas refine` — when auto-drafts and route traces need human-quality prose.

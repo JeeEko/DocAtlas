@@ -17,7 +17,7 @@ Use `--force` only if DocAtlas already exists and the user wants to reset.
 3. Tell the user the **DocAtlas loop** (do not run drift yet):
 
 ```
-docatlas refine  →  /docatlas-discovery  →  docatlas drift  →  commit
+docatlas refine  →  /docatlas-discovery  →  docatlas drift
 ```
 
 4. Tell the user to open `doc-atlas/docs/START_HERE.md` and run `/docatlas-refine` next.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.1 — 2026-09-12
+
+- **Discovery is a required loop step:** init → refine → **discovery** → drift
+- Updated CLI output, START_HERE, AGENTS, and all Cursor commands/skills
+
 ## 1.7.0 — 2026-09-12
 
 - **Framework parsers** for Next.js (pages + route handlers), NestJS, Express/Hono/Fastify/Koa, React Router, Vue Router, OpenAPI

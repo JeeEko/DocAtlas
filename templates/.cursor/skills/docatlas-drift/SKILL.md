@@ -16,5 +16,3 @@ description: Run docatlas drift to check documentation completeness. Use after d
    ```
 
 3. Report results. If issues, suggest `/docatlas-discovery` or `/docatlas-refine`.
-
-4. If clean, tell user to commit `doc-atlas/`.

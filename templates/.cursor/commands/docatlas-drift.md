@@ -19,4 +19,3 @@ Report issues plainly. If problems exist, suggest `/docatlas-discovery` or `/doc
 
 - User knows if docs are complete
 - List of any missing files or placeholders
-- Ready to commit `doc-atlas/`

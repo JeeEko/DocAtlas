@@ -71,8 +71,7 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 2. docatlas init                             ← scaffold
 3. docatlas refine                           ← trace routes (automated)
 4. /docatlas-discovery                       ← required — fill in docs from code
-5. docatlas drift                            ← verify before commit
-6. commit doc-atlas/
+5. docatlas drift                            ← verify docs complete
 ```
 
 Cursor equivalents: `/docatlas-init` → `/docatlas-refine` → **`/docatlas-discovery`** → `/docatlas-drift`
