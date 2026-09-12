@@ -26,9 +26,15 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 
 ## 5. Minimal assumptions about stack
 
-- Detect stack from `package.json` (Next, Express, etc.) for runbook hints only.
-- Support multiple routers (App Router, Pages Router, Express/Hono handlers) via generic patterns.
+- Detect stack from `package.json` and apply **framework parsers** (Next.js, NestJS, Express/Hono/Fastify, React Router, OpenAPI, etc.).
+- Parsers extract routes from code — they do not assume business domain.
+- Target **≥90% trace coverage** of detected pages and API routes; report gaps explicitly.
 - When a framework is unsupported, document what was found and leave gaps explicit.
+
+## 6. Accuracy over brevity
+
+- `docatlas refine` maps detected routes to journey steps until coverage meets the target (default 90%).
+- Full route inventory lives in `ARCHITECTURE.md`; journey groups related UI + API paths.
 
 ---
 

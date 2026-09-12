@@ -29,6 +29,7 @@ INIT OPTIONS
 
 REFINE OPTIONS
   --journey-name <name>   Override journey name (default: from .docatlas.json)
+  --min-coverage <pct>    Target trace coverage (default: 90)
 
 DRIFT OPTIONS
   --strict                Exit with error if issues found
@@ -53,6 +54,7 @@ function parseFlags(argv) {
     withGovernance: true,
     skipDraft: false,
     journeyName: '',
+    minCoverage: 90,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -62,6 +64,7 @@ function parseFlags(argv) {
     else if (a === '--no-governance') flags.withGovernance = false;
     else if (a === '--scaffold-only') flags.skipDraft = true;
     else if (a === '--journey-name') flags.journeyName = argv[++i] ?? '';
+    else if (a === '--min-coverage') flags.minCoverage = Number(argv[++i] ?? 90);
     else if (a.startsWith('-')) console.error(`Unknown option: ${a}`);
     else positional.push(a);
   }

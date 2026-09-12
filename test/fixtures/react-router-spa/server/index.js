@@ -1,0 +1,1 @@
+router.get('/api/users', h); router.post('/api/users', h); router.get('/api/reports', h);

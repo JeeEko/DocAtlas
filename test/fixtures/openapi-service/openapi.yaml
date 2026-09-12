@@ -1,0 +1,9 @@
+paths:
+  /api/v1/widgets:
+    get:
+      summary: list
+    post:
+      summary: create
+  /api/v1/widgets/{id}:
+    get:
+      summary: one
