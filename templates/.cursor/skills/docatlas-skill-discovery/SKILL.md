@@ -1,9 +1,11 @@
 ---
-name: docatlas-discovery
-description: Required step after refine — explore codebase and fill in DocAtlas documentation. Use when the user runs /docatlas-discovery or before drift.
+name: docatlas-skill-discovery
+description: Agent skill for doc discovery — not a slash command. Use when executing /docatlas-discovery or filling business and technical docs from code.
 ---
 
-# DocAtlas discovery
+# DocAtlas discovery (agent skill)
+
+**Not a slash command.** The user runs **`/docatlas-discovery`**. This skill guides the agent.
 
 Use this skill to learn the project and write documentation that stays useful.
 
@@ -11,10 +13,10 @@ Toolkit: https://github.com/JeeEko/DocAtlas
 
 ## When to use
 
-- DocAtlas was just bootstrapped and docs are still templates
-- A major feature changed architecture or setup steps
+- After `docatlas refine` (required loop step)
+- Docs are still templates or mostly `[likely]`
+- A major feature changed architecture or business rules
 - Drift check reports missing or stale documentation
-- A new team member needs accurate onboarding docs
 
 ## Workflow
 
@@ -63,8 +65,3 @@ Fix all reported issues before finishing.
 - Plain English — explain like onboarding a smart new hire
 - No invented features or **business rules** — cite README, tests, or code
 - Small accurate updates beat large speculative rewrites
-- Update `doc-atlas/AGENTS.md` if agent workflow conventions change
-
-## Prompts
-
-Copy-adapt prompts from https://github.com/JeeEko/DocAtlas/tree/main/prompts if you need structured discovery or maintenance passes.

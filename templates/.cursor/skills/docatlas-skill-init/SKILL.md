@@ -1,9 +1,11 @@
 ---
-name: docatlas-init
-description: Run docatlas init in the workspace to add and draft project documentation. Use when setting up DocAtlas on a repo or when the user runs /docatlas-init.
+name: docatlas-skill-init
+description: Agent skill for docatlas init — not a slash command. Use when executing /docatlas-init or when the user asks to set up DocAtlas.
 ---
 
-# DocAtlas init skill
+# DocAtlas init (agent skill)
+
+**Not a slash command.** The user runs **`/docatlas-init`**. This skill guides the agent.
 
 Run the **installed** DocAtlas CLI in the project root. Do not use `npx` unless `docatlas` is not on PATH.
 

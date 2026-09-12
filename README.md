@@ -58,8 +58,8 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 | `doc-atlas/docs/` | START_HERE, **BUSINESS**, JOURNEY, ARCHITECTURE, etc. |
 | `doc-atlas/GOVERNANCE/` | PR checklist, confidence tags |
 | `doc-atlas/.docatlas.json` | DocAtlas config |
-| `.cursor/commands/` | Slash commands |
-| `.cursor/skills/` | Agent skills |
+| `.cursor/commands/` | **Slash commands** — `/docatlas-init`, etc. |
+| `.cursor/skills/` | **Agent skills** — `docatlas-skill-init`, etc. |
 | `AGENTS.md` (root) | Short pointer to `doc-atlas/` |
 
 ---

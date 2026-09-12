@@ -1,11 +1,14 @@
 # DocAtlas refine
 
+> **Slash command** — you run **`/docatlas-refine`** in Cursor chat.  
+> Pairs with agent skill **`docatlas-skill-refine`** (`.cursor/skills/docatlas-skill-refine/`).
+
 Trace routes through the code and write journey documentation.
 
 ## Procedure
 
-1. Confirm `docatlas init` was already run (`doc-atlas/.docatlas.json` exists). If not, run `/docatlas-init` first.
-2. Run in the **workspace root**:
+1. Confirm `docatlas init` was already run (`doc-atlas/.docatlas.json` exists). If not, run **`/docatlas-init`** first.
+2. Follow skill **`docatlas-skill-refine`** and run in the **workspace root**:
 
 ```bash
 docatlas refine

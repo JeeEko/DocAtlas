@@ -22,16 +22,18 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 User should install once: `npm install -g github:JeeEko/DocAtlas`
 
-Then use **slash commands** in this repo:
+Then use **slash commands** in this repo (what **you** type):
 
-| Command | Runs |
+| Slash command | Runs |
 |---------|------|
 | `/docatlas-init` | `docatlas init` |
 | `/docatlas-refine` | `docatlas refine` |
 | `/docatlas-discovery` | Agent deep-dive — fill in docs from code |
 | `/docatlas-drift` | `docatlas drift` |
 
-Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.cursor/skills/`.
+**Agent skills** (background — do not type these as commands): `docatlas-skill-init`, `docatlas-skill-refine`, `docatlas-skill-discovery`, `docatlas-skill-drift` in `.cursor/skills/`.
+
+Agents: slash commands in `.cursor/commands/` invoke skills in `.cursor/skills/`.
 
 ## DocAtlas workflow (always in order)
 

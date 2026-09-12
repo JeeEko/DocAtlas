@@ -1,17 +1,20 @@
 # DocAtlas discovery
 
+> **Slash command** — you run **`/docatlas-discovery`** in Cursor chat.  
+> Pairs with agent skill **`docatlas-skill-discovery`** (`.cursor/skills/docatlas-skill-discovery/`).
+
 **Required step** in the DocAtlas loop: init → refine → **discovery** → drift.
 
 Deep exploration pass: read the codebase and **fill in** DocAtlas docs with verified detail.
 
-Use this **after** `docatlas init` and usually **after** `docatlas refine` — when auto-drafts and route traces need human-quality prose.
+Use this **after** `docatlas init` and **`/docatlas-refine`**.
 
 ## Procedure
 
-1. Confirm `doc-atlas/` exists (`.docatlas.json`). If not, run `/docatlas-init` first.
-2. Read the **docatlas-discovery** skill: `.cursor/skills/docatlas-discovery/SKILL.md` — follow it fully.
+1. Confirm `doc-atlas/` exists (`.docatlas.json`). If not, run **`/docatlas-init`** first.
+2. Follow skill **`docatlas-skill-discovery`** (read `.cursor/skills/docatlas-skill-discovery/SKILL.md` fully).
 3. Orient: `doc-atlas/docs/START_HERE.md`, `doc-atlas/.docatlas.json`, README, package files.
-4. Explore the codebase (entry points, env vars, CI, deploy config).
+4. Explore the codebase (entry points, env vars, CI, deploy config, **business rules**).
 5. Update docs with confidence tags:
    - `doc-atlas/docs/BUSINESS.md` — problem, users, business rules
    - `doc-atlas/docs/ARCHITECTURE.md` — components, data flow
@@ -29,5 +32,4 @@ Use this **after** `docatlas init` and usually **after** `docatlas refine` — w
 ## Expected outcome
 
 - Docs upgraded from `[likely]` templates to accurate, readable guides
-- Drift clean
-- User knows remaining gaps (if any) as `[uncertain]` with owner or issue link
+- Drift clean or user informed of remaining gaps

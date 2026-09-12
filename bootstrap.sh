@@ -140,7 +140,7 @@ bootstrap_core() {
 
   copy_file "${TEMPLATES_DIR}/.cursor/rules/docatlas-core.mdc" "${TARGET_DIR}/.cursor/rules/docatlas-core.mdc"
   copy_file "${TEMPLATES_DIR}/.cursor/rules/docatlas-docs.mdc" "${TARGET_DIR}/.cursor/rules/docatlas-docs.mdc"
-  copy_file "${TEMPLATES_DIR}/.cursor/skills/docatlas-discovery/SKILL.md" "${TARGET_DIR}/.cursor/skills/docatlas-discovery/SKILL.md"
+  copy_file "${TEMPLATES_DIR}/.cursor/skills/docatlas-skill-discovery/SKILL.md" "${TARGET_DIR}/.cursor/skills/docatlas-skill-discovery/SKILL.md"
 
   copy_file "${TEMPLATES_DIR}/.github/pull_request_template.md" "${TARGET_DIR}/.github/pull_request_template.md"
   copy_file "${TEMPLATES_DIR}/.github/workflows/docatlas-drift-report.yml" "${TARGET_DIR}/.github/workflows/docatlas-drift-report.yml"
