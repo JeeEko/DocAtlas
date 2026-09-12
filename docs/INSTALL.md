@@ -61,32 +61,29 @@ Then use `npx docatlas ...` **only inside that repo**, or add to `package.json`:
 
 ## After install — in any project
 
-### First time in a project (terminal required)
+### First time in a project
 
-Slash commands like `/docatlas-init` **do not exist until you run init once**. Cursor reads them from `.cursor/commands/`, which DocAtlas creates during init.
+**`/docatlas`** and workflow skills are copied on init. You can run the full journey in Cursor, or use the terminal:
 
 ```bash
 cd your-project
 docatlas init --with-governance
 docatlas refine
-# /docatlas-discovery in Cursor — required before drift
+# discovery — run /docatlas in Cursor (Phase 3), or re-run /docatlas for the full cycle
 docatlas drift
 ```
 
-Reload the Cursor window if slash commands do not appear immediately.
+Reload the Cursor window if `/docatlas` does not appear after init.
 
-### After init (Cursor or terminal)
+### In Cursor
 
-**Slash commands** — the only Cursor entry points (`/docatlas-*`):
+**One slash command** runs the full documentation journey:
 
 | Command | Action |
 |---------|--------|
-| `/docatlas-init` | Set up docs in this repo |
-| `/docatlas-refine` | Trace routes in code (automated) |
-| `/docatlas-discovery` | Deep-dive — fill in docs from code |
-| `/docatlas-drift` | Check documentation |
+| **`/docatlas`** | init → refine → discovery → drift |
 
-Procedures live in `.cursor/commands/`. There are no separate DocAtlas skills to invoke.
+Phase workflows live in `.cursor/skills/docatlas-skill-*/` — loaded by the command, not invoked directly.
 
 See [COMMANDS.md](COMMANDS.md) for the full CLI vs slash command reference.
 

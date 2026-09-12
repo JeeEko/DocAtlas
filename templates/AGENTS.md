@@ -22,25 +22,24 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 User should install once: `npm install -g github:JeeEko/DocAtlas`
 
-Then use **slash commands** only (what you type in Cursor chat):
+**One slash command** runs the full documentation journey:
 
-| Slash command | Runs |
-|---------|------|
-| `/docatlas-init` | `docatlas init` |
-| `/docatlas-refine` | `docatlas refine` |
-| `/docatlas-discovery` | Deep-dive — fill in docs from code |
-| `/docatlas-drift` | `docatlas drift` |
+| Slash command | What it does |
+|---------------|--------------|
+| **`/docatlas`** | Full cycle: init → refine → discovery → drift |
 
-Full procedure for each step lives in `.cursor/commands/docatlas-*.md`. Do not use a separate skill entry point — run the slash command.
+The command loads workflow skills in order (`.cursor/skills/docatlas-skill-*/SKILL.md`). Users should **not** invoke those skills directly.
+
+Individual CLI steps (`docatlas init`, `docatlas refine`, `docatlas drift`) remain available in the terminal for automation and CI.
 
 ## DocAtlas workflow (always in order)
 
-| Step | Command | Who |
-|------|---------|-----|
-| 1 | `docatlas init` | CLI — once per project |
-| 2 | `docatlas refine` | CLI — trace routes |
-| 3 | **`/docatlas-discovery`** | Cursor — required quality pass |
-| 4 | `docatlas drift` | CLI — verify docs complete |
+| Phase | What runs | Who |
+|-------|-----------|-----|
+| 1 Init | `docatlas init` | CLI (via skill workflow) |
+| 2 Refine | `docatlas refine` | CLI — trace routes |
+| 3 Discovery | Agent explores code | **Required** — fills accurate docs |
+| 4 Drift | `docatlas drift` | CLI — verify complete |
 
 Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until discovery confirms them.
 
@@ -67,3 +66,4 @@ Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until di
 - Invent features not present in the codebase
 - Mark docs `[verified]` without confirming against code or tests
 - Tell users to run `npx github:JeeEko/DocAtlas` if `docatlas` is installed globally
+- Tell users to invoke `docatlas-skill-*` directly — use **`/docatlas`**

@@ -44,11 +44,11 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 - `docatlas refine` maps detected routes to journey steps until coverage meets the target (default 90%).
 - Full route inventory lives in `ARCHITECTURE.md`; journey groups related UI + API paths.
 
-## 8. One Cursor entry point per step
+## 8. One Cursor entry point, skills for workflows
 
-- Users run **slash commands** (`/docatlas-init`, `/docatlas-refine`, `/docatlas-discovery`, `/docatlas-drift`) — not separate skills.
-- Each command file in `.cursor/commands/` is a **self-contained procedure** the agent follows when invoked.
-- Do not ship parallel DocAtlas skills that duplicate command names or confuse what the user should type.
+- Users run **one slash command**: **`/docatlas`** — it orchestrates the full init → refine → discovery → drift journey.
+- Detailed phase procedures live in **workflow skills** (`.cursor/skills/docatlas-skill-*/SKILL.md`). The command loads each skill in order; users do not invoke skills directly.
+- Terminal CLI commands remain for CI, scripting, and individual automated steps.
 
 ---
 

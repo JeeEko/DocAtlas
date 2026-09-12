@@ -23,4 +23,4 @@ When editing files under `doc-atlas/`:
 
 ## Drift
 
-Before finishing doc edits, run `docatlas drift` or `/docatlas-drift`.
+Before finishing doc edits, run `docatlas drift` or **`/docatlas`** (drift phase).

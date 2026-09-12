@@ -41,7 +41,7 @@ EXAMPLES
   cd your-project
   docatlas init
   docatlas refine
-  /docatlas-discovery    # Cursor — required quality pass
+  /docatlas               # Cursor — full journey (init → refine → discovery → drift)
   docatlas drift
 
 More: https://github.com/JeeEko/DocAtlas

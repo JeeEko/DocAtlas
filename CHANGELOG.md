@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0 — 2026-09-12
+
+- **Single Cursor entry point:** **`/docatlas`** runs the full init → refine → discovery → drift journey
+- **Workflow skills** restored — phase procedures live in `.cursor/skills/docatlas-skill-*/` (loaded by `/docatlas`, not invoked directly)
+- Removed individual slash commands (`/docatlas-init`, `/docatlas-refine`, etc.)
+- Updated docs, AGENTS, CLI output, and [docs/COMMANDS.md](docs/COMMANDS.md)
+
 ## 1.9.0 — 2026-09-12
 
 - **Commands-only Cursor UX** — removed DocAtlas agent skills; slash commands are the sole Cursor entry points

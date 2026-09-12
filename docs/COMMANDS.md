@@ -1,14 +1,35 @@
 # DocAtlas commands
 
-Two ways to run DocAtlas: **terminal CLI** and **Cursor slash commands**. They map to the same workflow — use whichever fits the step.
+DocAtlas has a **terminal CLI** and **one Cursor slash command** that runs the full documentation journey.
 
 ## The loop
 
 ```
-docatlas init  →  docatlas refine  →  /docatlas-discovery  →  docatlas drift
+/docatlas  →  init → refine → discovery → drift
 ```
 
-Discovery has no CLI equivalent — it is an agent deep-dive in Cursor.
+Or step-by-step in the terminal (for CI or scripting):
+
+```
+docatlas init  →  docatlas refine  →  (discovery in Cursor)  →  docatlas drift
+```
+
+Discovery has no CLI equivalent — it is an agent deep-dive loaded as Phase 3 of `/docatlas`.
+
+---
+
+## Cursor (recommended)
+
+Type **`/docatlas`** in Cursor chat after the first terminal init (or let Phase 1 run init for you).
+
+| What | Where |
+|------|-------|
+| User entry point | `.cursor/commands/docatlas.md` → **`/docatlas`** |
+| Workflow procedures | `.cursor/skills/docatlas-skill-init/` … `docatlas-skill-drift/` |
+
+The command detects which phase to start from, then loads each skill in order. **Do not invoke skills directly** — run `/docatlas`.
+
+Reload the Cursor window if `/docatlas` does not appear after init.
 
 ---
 
@@ -18,30 +39,13 @@ Run from your project root after [installing DocAtlas](INSTALL.md).
 
 | Command | Purpose |
 |---------|---------|
-| `docatlas init` | Scaffold `doc-atlas/` and copy Cursor slash commands into `.cursor/commands/` |
-| `docatlas refine` | Trace routes with framework parsers; draft journeys and architecture |
+| `docatlas init` | Scaffold `doc-atlas/` and copy `/docatlas` + workflow skills |
+| `docatlas refine` | Trace routes with framework parsers; draft journeys |
 | `docatlas drift` | Check required docs exist and flag gaps |
 | `docatlas version` | Show installed toolkit version |
 | `docatlas help` | Show CLI usage |
 
-**First time in a repo:** run `docatlas init` in the terminal. Slash commands do not exist until init copies them.
-
----
-
-## Cursor slash commands
-
-Type these in Cursor chat. Procedures live in `.cursor/commands/docatlas-*.md`.
-
-| Slash command | Purpose | CLI equivalent |
-|---------------|---------|----------------|
-| `/docatlas-init` | Set up DocAtlas in this repo | `docatlas init` |
-| `/docatlas-refine` | Trace routes in code | `docatlas refine` |
-| `/docatlas-discovery` | **Required** — explore codebase and fill in docs | *(none — agent only)* |
-| `/docatlas-drift` | Verify documentation completeness | `docatlas drift` |
-
-There are **no separate DocAtlas skills** to invoke. Each slash command file contains the full procedure the agent follows.
-
-Reload the Cursor window if slash commands do not appear after init.
+Use CLI steps individually for CI, scripts, or when you only need one automated phase.
 
 ---
 
@@ -49,11 +53,24 @@ Reload the Cursor window if slash commands do not appear after init.
 
 | Situation | Use |
 |-----------|-----|
-| First setup in a project | Terminal: `docatlas init` |
-| Automated route tracing | Terminal: `docatlas refine` or `/docatlas-refine` |
-| Fill in business rules, onboarding, accurate architecture | **`/docatlas-discovery`** (required before drift) |
-| Quick completeness check | Terminal: `docatlas drift` or `/docatlas-drift` |
-| CI / pre-merge | `docatlas drift` (see `.github/workflows/docatlas-drift-report.yml`) |
+| First documentation pass in a project | **`/docatlas`** in Cursor |
+| Re-run full journey after major changes | **`/docatlas`** |
+| Automated route tracing only | `docatlas refine` |
+| CI / pre-merge check | `docatlas drift` |
+| Bootstrap without Cursor | `docatlas init` then CLI steps |
+
+---
+
+## Workflow skills (agent-only)
+
+| Skill | Phase | Purpose |
+|-------|-------|---------|
+| `docatlas-skill-init` | 1 | Scaffold docs and Cursor files |
+| `docatlas-skill-refine` | 2 | Run parsers, draft journeys |
+| `docatlas-skill-discovery` | 3 | Explore code, fill accurate docs |
+| `docatlas-skill-drift` | 4 | Verify completeness |
+
+These are loaded by `/docatlas`, not typed by users.
 
 ---
 
@@ -61,7 +78,7 @@ Reload the Cursor window if slash commands do not appear after init.
 
 | Path | Role |
 |------|------|
-| `.cursor/commands/docatlas-*.md` | Slash command procedures |
+| `.cursor/commands/docatlas.md` | **`/docatlas`** orchestrator |
+| `.cursor/skills/docatlas-skill-*/SKILL.md` | Phase workflows |
 | `.cursor/rules/docatlas-*.mdc` | Agent rules for doc edits |
 | `doc-atlas/docs/START_HERE.md` | Onboarding inside the project |
-| `doc-atlas/AGENTS.md` | Agent pointer and loop summary |

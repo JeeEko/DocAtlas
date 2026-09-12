@@ -140,11 +140,12 @@ bootstrap_core() {
 
   copy_file "${TEMPLATES_DIR}/.cursor/rules/docatlas-core.mdc" "${TARGET_DIR}/.cursor/rules/docatlas-core.mdc"
   copy_file "${TEMPLATES_DIR}/.cursor/rules/docatlas-docs.mdc" "${TARGET_DIR}/.cursor/rules/docatlas-docs.mdc"
+  copy_file "${TEMPLATES_DIR}/.cursor/commands/docatlas.md" "${TARGET_DIR}/.cursor/commands/docatlas.md"
 
-  local cmd
-  for cmd in "${TEMPLATES_DIR}"/.cursor/commands/docatlas-*.md; do
-    [[ -f "${cmd}" ]] || continue
-    copy_file "${cmd}" "${TARGET_DIR}/.cursor/commands/$(basename "${cmd}")"
+  local skill
+  for skill in "${TEMPLATES_DIR}"/.cursor/skills/docatlas-skill-*/SKILL.md; do
+    [[ -f "${skill}" ]] || continue
+    copy_file "${skill}" "${TARGET_DIR}/.cursor/skills/$(basename "$(dirname "${skill}")")/SKILL.md"
   done
 
   copy_file "${TEMPLATES_DIR}/.github/pull_request_template.md" "${TARGET_DIR}/.github/pull_request_template.md"

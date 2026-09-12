@@ -39,10 +39,11 @@ templates:
   cursor:
     - .cursor/rules/docatlas-core.mdc
     - .cursor/rules/docatlas-docs.mdc
-    - .cursor/commands/docatlas-init.md
-    - .cursor/commands/docatlas-refine.md
-    - .cursor/commands/docatlas-discovery.md
-    - .cursor/commands/docatlas-drift.md
+    - .cursor/commands/docatlas.md
+    - .cursor/skills/docatlas-skill-init/SKILL.md
+    - .cursor/skills/docatlas-skill-refine/SKILL.md
+    - .cursor/skills/docatlas-skill-discovery/SKILL.md
+    - .cursor/skills/docatlas-skill-drift/SKILL.md
   github:
     - .github/pull_request_template.md
     - .github/workflows/docatlas-drift-report.yml
