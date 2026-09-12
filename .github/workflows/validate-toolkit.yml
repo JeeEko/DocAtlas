@@ -37,6 +37,8 @@ jobs:
           test -f /tmp/test-app/doc-atlas/.docatlas.json
           test -f /tmp/test-app/.cursor/commands/docatlas.md
           test -f /tmp/test-app/.cursor/skills/docatlas-skill-discovery/SKILL.md
+          test -f /tmp/test-app/doc-atlas/docs/business/CONTEXT-MAP.md
+          node scripts/test-business-contexts.mjs
           node bin/docatlas.js drift /tmp/test-app
 
       - name: Verify VERSION

@@ -11,7 +11,9 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 | File | Purpose |
 |------|---------|
 | `doc-atlas/docs/START_HERE.md` | **Read first** — 2-minute orientation |
-| `doc-atlas/docs/BUSINESS.md` | **Why** — problem, users, business rules |
+| `doc-atlas/docs/BUSINESS.md` | **Why** — executive index (links to contexts) |
+| `doc-atlas/docs/business/CONTEXT-MAP.md` | Detected business areas and boundaries |
+| `doc-atlas/docs/business/contexts/*.md` | Per-area capabilities, actors, rules |
 | `doc-atlas/docs/JOURNEY-*.md` | Main user flow traced in code |
 | `doc-atlas/docs/ARCHITECTURE.md` | System design and components |
 | `doc-atlas/docs/ONBOARDING.md` | New developer setup guide |
@@ -55,8 +57,8 @@ Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until di
 
 | Change | Update |
 |--------|--------|
-| New feature or API | BUSINESS, ARCHITECTURE, RUNBOOK, JOURNEY |
-| Business rule or policy | BUSINESS, GLOSSARY, JOURNEY |
+| New feature or API | Context doc(s), ARCHITECTURE, RUNBOOK, JOURNEY |
+| Business rule or policy | Context doc for that area, GLOSSARY, JOURNEY |
 | New env var or setup step | ONBOARDING, RUNBOOK |
 | New domain term | GLOSSARY |
 | User flow changed | JOURNEY doc |

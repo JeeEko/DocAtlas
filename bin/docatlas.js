@@ -7,6 +7,7 @@ import { bootstrapProject, applyJourneyPlaceholder } from '../lib/bootstrap.js';
 import { scanProject } from '../lib/scan.js';
 import { draftDocumentation } from '../lib/draft.js';
 import { runRefineCommand } from '../lib/refine-cli.js';
+import { runMapContextsCommand } from '../lib/map-contexts-cli.js';
 
 const args = process.argv.slice(2);
 
@@ -17,6 +18,7 @@ DocAtlas — Learn the project. Write it down. Keep it updated.
 USAGE
   docatlas init [options]     Add docs + auto-draft (start here)
   docatlas refine [options]   Trace main user flow in code (step 2)
+  docatlas map-contexts       Detect business areas and scaffold context docs
   docatlas drift [options]    Check for missing or placeholder docs
   docatlas version            Show version
   docatlas help               Show this message
@@ -30,6 +32,9 @@ INIT OPTIONS
 REFINE OPTIONS
   --journey-name <name>   Override journey name (default: from .docatlas.json)
   --min-coverage <pct>    Target trace coverage (default: 90)
+
+MAP-CONTEXTS OPTIONS
+  --force                 Overwrite existing context docs and CONTEXT-MAP.md
 
 DRIFT OPTIONS
   --strict                Exit with error if issues found
@@ -93,6 +98,9 @@ async function main() {
       }
       case 'refine':
         runRefineCommand(projectRoot, flags);
+        break;
+      case 'map-contexts':
+        runMapContextsCommand(projectRoot, flags);
         break;
       case 'drift': {
         const { issues, exitCode } = checkDrift(projectRoot, { strict: flags.strict });

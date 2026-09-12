@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0 — 2026-09-12
+
+- **Business context mapping** — `docatlas map-contexts` detects areas from packages, domain folders, and API prefixes
+- Business docs split under `doc-atlas/docs/business/contexts/<slug>.md` with `CONTEXT-MAP.md` + index `BUSINESS.md`
+- `businessContexts` persisted in `.docatlas.json` for drift and discovery
+- Discovery skill: investigate whole project → validate map → fill per-context docs
+- Init auto-runs context mapping during draft; drift requires map + context files
+
 ## 2.0.0 — 2026-09-12
 
 - **Single Cursor entry point:** **`/docatlas`** runs the full init → refine → discovery → drift journey

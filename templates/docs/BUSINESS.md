@@ -1,11 +1,10 @@
-# Business context
+# Business overview
 
 **Project:** __JOURNEY_NAME__
 
-What this product does in **business terms** — for developers, agents, and stakeholders who need the *why*, not just the code layout.
+Executive index for business documentation. **Per-context detail** lives under [business/contexts/](business/contexts/) — not in this file.
 
-> DocAtlas template — fill during **discovery** from README, product docs, tests, and domain code. Do not invent rules. Use confidence tags.
-> Toolkit: https://github.com/JeeEko/DocAtlas
+> Run `docatlas map-contexts` (or `/docatlas` discovery) to detect areas from the codebase.
 
 ## What problem does this solve? [uncertain]
 
@@ -17,29 +16,21 @@ TODO: Plain-language problem statement (1–3 sentences).
 |-------|------|
 | TODO | TODO |
 
-## Core capabilities [uncertain]
+## Business contexts
 
-What the product **must** do for users (not how it is implemented):
+See [business/CONTEXT-MAP.md](business/CONTEXT-MAP.md) for the full map.
 
-1. TODO
-2. TODO
+| Context | Doc |
+|---------|-----|
+| TODO | Run `docatlas map-contexts` |
 
-## Business rules [uncertain]
-
-Rules that affect behavior — confirm against code, tests, or product owner:
-
-| Rule | Source | Confidence |
-|------|--------|------------|
-| TODO | TODO | [uncertain] |
-
-## Out of scope [uncertain]
-
-What this project explicitly does **not** do (if known):
+## Out of scope (product-wide) [uncertain]
 
 - TODO
 
 ## Related docs
 
-- [Journey trace](JOURNEY-*.md) — user flows in code (after `docatlas refine`)
-- [Architecture](ARCHITECTURE.md) — technical design
-- [Glossary](GLOSSARY.md) — terms
+- [Context map](business/CONTEXT-MAP.md)
+- [Journey traces](JOURNEY-*.md)
+- [Architecture](ARCHITECTURE.md)
+- [Glossary](GLOSSARY.md)

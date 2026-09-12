@@ -11,6 +11,7 @@ cli:
   commands:
     - bootstrap
     - drift
+    - map-contexts
     - version
     - help
 
@@ -33,6 +34,9 @@ templates:
     - .docatlas.json
   docs:
     - docs/ARCHITECTURE.md
+    - docs/BUSINESS.md
+    - docs/business/CONTEXT-MAP.md
+    - docs/business/contexts/_TEMPLATE.md
     - docs/ONBOARDING.md
     - docs/RUNBOOK.md
     - docs/GLOSSARY.md

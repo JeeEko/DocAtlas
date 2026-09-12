@@ -28,9 +28,13 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 
 | Doc | Purpose |
 |-----|---------|
-| `BUSINESS.md` | Why the product exists, who uses it, rules and capabilities |
+| `BUSINESS.md` | Executive index — problem, actors, links to contexts |
+| `business/CONTEXT-MAP.md` | Detected areas, evidence, boundaries |
+| `business/contexts/*.md` | Per-area capabilities, actors, rules |
 | `ARCHITECTURE.md` | How it is built |
 | `JOURNEY-*.md` | Where flows live in code |
+
+Business docs **split by mapped context** — not one monolithic file. `docatlas map-contexts` suggests areas from repo structure; discovery validates and fills them.
 
 ## 6. Minimal assumptions about stack
 

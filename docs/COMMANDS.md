@@ -41,6 +41,7 @@ Run from your project root after [installing DocAtlas](INSTALL.md).
 |---------|---------|
 | `docatlas init` | Scaffold `doc-atlas/` and copy `/docatlas` + workflow skills |
 | `docatlas refine` | Trace routes with framework parsers; draft journeys |
+| `docatlas map-contexts` | Detect business areas and scaffold context docs |
 | `docatlas drift` | Check required docs exist and flag gaps |
 | `docatlas version` | Show installed toolkit version |
 | `docatlas help` | Show CLI usage |
