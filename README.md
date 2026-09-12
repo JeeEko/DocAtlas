@@ -54,7 +54,7 @@ Reload the Cursor window if `/docatlas` does not appear after init.
 
 | Path | Purpose |
 |------|---------|
-| `doc-atlas/docs/` | START_HERE, **BUSINESS**, JOURNEY, ARCHITECTURE, etc. |
+| `doc-atlas/docs/` | START_HERE, **BUSINESS** (index), **business/contexts/**, JOURNEY, ARCHITECTURE |
 | `doc-atlas/GOVERNANCE/` | PR checklist, confidence tags |
 | `doc-atlas/.docatlas.json` | DocAtlas config |
 | `.cursor/commands/docatlas.md` | **`/docatlas`** — full documentation journey |
@@ -85,7 +85,8 @@ docatlas init  →  docatlas refine  →  /docatlas (discovery phase)  →  doca
 
 See [docs/COMMANDS.md](docs/COMMANDS.md) for the full CLI vs slash command reference.
 
-| **`/docatlas`** | Full journey — init, refine, discovery, drift |
+| **`/docatlas`** | Full journey — init, refine, discovery (context map + fill), drift |
+| `docatlas map-contexts` | Detect business areas and scaffold context docs (CLI) |
 | `docatlas init` | Scaffold only (CLI) |
 | `docatlas refine` | Trace routes only (CLI) |
 | `docatlas drift` | Verify docs (CLI) |
