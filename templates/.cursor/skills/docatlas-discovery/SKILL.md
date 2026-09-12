@@ -22,9 +22,9 @@ Toolkit: https://github.com/JeeEko/DocAtlas
 
 Read in order:
 
-1. `AGENTS.md`
-2. `.docatlas.json`
-3. Existing files in `docs/`
+1. `AGENTS.md` and `doc-atlas/AGENTS.md`
+2. `doc-atlas/.docatlas.json`
+3. Existing files in `doc-atlas/docs/`
 4. README and package/config files
 
 ### 2. Explore the codebase
@@ -40,10 +40,10 @@ Find:
 
 | File | Focus |
 |------|-------|
-| `docs/ARCHITECTURE.md` | Components, data flow, dependencies |
-| `docs/ONBOARDING.md` | Prerequisites, setup, first tasks |
-| `docs/RUNBOOK.md` | Dev, build, deploy, troubleshooting |
-| `docs/GLOSSARY.md` | Domain terms |
+| `doc-atlas/docs/ARCHITECTURE.md` | Components, data flow, dependencies |
+| `doc-atlas/docs/ONBOARDING.md` | Prerequisites, setup, first tasks |
+| `doc-atlas/docs/RUNBOOK.md` | Dev, build, deploy, troubleshooting |
+| `doc-atlas/docs/GLOSSARY.md` | Domain terms |
 
 Use confidence tags. Only use `[verified]` for confirmed facts.
 
@@ -61,7 +61,7 @@ Fix all reported issues before finishing.
 - Plain English — explain like onboarding a smart new hire
 - No invented features
 - Small accurate updates beat large speculative rewrites
-- Update `AGENTS.md` if agent workflow conventions change
+- Update `doc-atlas/AGENTS.md` if agent workflow conventions change
 
 ## Prompts
 

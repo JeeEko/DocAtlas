@@ -10,8 +10,8 @@ This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentatio
 
 ## Before making changes
 
-1. Read `AGENTS.md` for project-specific agent guidance
-2. Check `docs/` for architecture, onboarding, and runbook context
+1. Read `AGENTS.md` and `doc-atlas/docs/START_HERE.md`
+2. Check `doc-atlas/docs/` for architecture, onboarding, and runbook context
 3. If behavior changes, plan doc updates in the same change
 
 ## Documentation standards
@@ -24,8 +24,8 @@ This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentatio
 ## Drift prevention
 
 - Run `docatlas drift` after doc changes
-- Update `docs/GLOSSARY.md` when introducing new domain terms
-- Keep `docs/RUNBOOK.md` commands copy-paste accurate
+- Update `doc-atlas/docs/GLOSSARY.md` when introducing new domain terms
+- Keep `doc-atlas/docs/RUNBOOK.md` commands copy-paste accurate
 
 ## Do not
 

@@ -1,42 +1,26 @@
 ---
-description: DocAtlas documentation editing rules
+description: Apply when editing DocAtlas documentation files
 globs:
-  - docs/**
-  - AGENTS.md
-  - GOVERNANCE/**
+  - doc-atlas/docs/**
+  - doc-atlas/GOVERNANCE/**
 ---
 
 # DocAtlas documentation rules
 
-When editing files matched by this rule:
+When editing files under `doc-atlas/`:
 
-## Structure
+- Use confidence tags: `[verified]`, `[likely]`, `[uncertain]`, `[planned]`
+- Keep file paths accurate and copy-pasteable
+- Update related docs when behavior changes
 
-- `docs/ARCHITECTURE.md` — system design, components, data flow
-- `docs/ONBOARDING.md` — setup and first-day guide
-- `docs/RUNBOOK.md` — run, deploy, troubleshoot
-- `docs/GLOSSARY.md` — terms and abbreviations
+## File purposes
 
-## Writing style
+- `doc-atlas/docs/ARCHITECTURE.md` — system design, components, data flow
+- `doc-atlas/docs/ONBOARDING.md` — setup and first-day guide
+- `doc-atlas/docs/RUNBOOK.md` — run, deploy, troubleshoot
+- `doc-atlas/docs/GLOSSARY.md` — terms and abbreviations
+- `doc-atlas/docs/JOURNEY-*.md` — traced user flows
 
-- Short sentences, clear headings, tables for reference data
-- Commands in fenced code blocks — must be runnable as shown
-- Link between docs instead of duplicating content
+## Drift
 
-## Confidence tags
-
-Place at section level:
-
-- `[verified]` — confirmed recently against code or by running steps
-- `[likely]` — based on code reading, not yet tested
-- `[uncertain]` — needs owner follow-up; name owner or link issue
-- `[planned]` — future behavior not yet shipped
-
-## Checklist before finishing
-
-- [ ] No bare `TODO` or `__JOURNEY_NAME__` left without explanation
-- [ ] Commands tested or marked `[uncertain]`
-- [ ] Glossary updated for new terms
-- [ ] `docatlas drift` would pass
-
-Toolkit: https://github.com/JeeEko/DocAtlas
+Before finishing doc edits, run `docatlas drift` or `/docatlas-drift`.

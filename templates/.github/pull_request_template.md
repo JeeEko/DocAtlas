@@ -16,7 +16,7 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) to keep docs in
 
 - [ ] I updated docs affected by this change
 - [ ] I ran `docatlas drift` locally (or CI drift check passed)
-- [ ] New terms added to `docs/GLOSSARY.md` if applicable
+- [ ] New terms added to `doc-atlas/docs/GLOSSARY.md` if applicable
 - [ ] Confidence tags are accurate (`[verified]`, `[likely]`, `[uncertain]`, `[planned]`)
 
 If no doc updates were needed, explain why:

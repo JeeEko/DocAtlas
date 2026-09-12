@@ -10,12 +10,12 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 | File | Purpose |
 |------|---------|
-| `docs/START_HERE.md` | **Read first** — 2-minute orientation |
-| `docs/JOURNEY-*.md` | Main user flow traced in code |
-| `docs/ARCHITECTURE.md` | System design and components |
-| `docs/ONBOARDING.md` | New developer setup guide |
-| `docs/RUNBOOK.md` | Run, deploy, troubleshoot |
-| `docs/GLOSSARY.md` | Terms and abbreviations |
+| `doc-atlas/docs/START_HERE.md` | **Read first** — 2-minute orientation |
+| `doc-atlas/docs/JOURNEY-*.md` | Main user flow traced in code |
+| `doc-atlas/docs/ARCHITECTURE.md` | System design and components |
+| `doc-atlas/docs/ONBOARDING.md` | New developer setup guide |
+| `doc-atlas/docs/RUNBOOK.md` | Run, deploy, troubleshoot |
+| `doc-atlas/docs/GLOSSARY.md` | Terms and abbreviations |
 
 ## DocAtlas in Cursor (preferred)
 
@@ -33,10 +33,10 @@ Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.curso
 
 ## Rules for agents
 
-1. **Read before you change** — `docs/START_HERE.md` first
+1. **Read before you change** — `doc-atlas/docs/START_HERE.md` first
 2. **Prefer DocAtlas CLI** — run `docatlas refine` / `docatlas drift` instead of reinventing long discovery prompts
 3. **Update docs in the same PR** — Code and docs stay in sync
-4. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]` (see `GOVERNANCE/CONFIDENCE_TAGS.md`)
+4. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]` (see `doc-atlas/GOVERNANCE/CONFIDENCE_TAGS.md`)
 5. **Plain language** — Write for a smart developer new to this repo
 
 ## When to update which doc

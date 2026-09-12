@@ -23,4 +23,8 @@ Run the **installed** DocAtlas CLI in the project root. Do not use `npx` unless 
 
 3. Run `docatlas drift` and report.
 
-4. Point user to `docs/START_HERE.md` and `/docatlas-refine` as next step.
+4. Point user to `doc-atlas/docs/START_HERE.md` and `/docatlas-refine` as next step.
+
+## Output layout
+
+Everything DocAtlas owns goes under `doc-atlas/`. Cursor hooks stay in `.cursor/`.

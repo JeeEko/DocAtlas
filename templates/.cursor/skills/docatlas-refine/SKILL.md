@@ -9,7 +9,7 @@ Prefer the CLI over manual exploration.
 
 ## Steps
 
-1. Ensure `.docatlas.json` exists; if not, run docatlas-init skill first.
+1. Ensure `doc-atlas/.docatlas.json` exists; if not, run docatlas-init skill first.
 
 2. Run in project root:
 
@@ -19,7 +19,7 @@ Prefer the CLI over manual exploration.
 
 3. Run `docatlas drift`.
 
-4. Read `docs/JOURNEY-*.md` and summarize for the user in plain language with a few file paths.
+4. Read `doc-atlas/docs/JOURNEY-*.md` and summarize for the user in plain language with a few file paths.
 
 5. Fix doc issues only if drift failed or user asked.
 

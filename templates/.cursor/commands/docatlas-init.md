@@ -15,7 +15,7 @@ docatlas init --with-governance
 Use `--force` only if DocAtlas already exists and the user wants to reset.
 
 3. Run `docatlas drift` and report the result.
-4. Tell the user to open `docs/START_HERE.md`.
+4. Tell the user to open `doc-atlas/docs/START_HERE.md`.
 
 ## Arguments
 
@@ -27,5 +27,15 @@ docatlas init --journey-name "TheirFlowName" --with-governance
 
 ## Expected outcome
 
-- `docs/` populated, `.docatlas.json` created
+- `doc-atlas/` populated (docs, governance, config)
+- `.cursor/commands` and `.cursor/skills` for slash commands
 - User knows next step: `/docatlas-refine` or `docatlas refine`
+
+## Layout
+
+| Location | Contents |
+|----------|----------|
+| `doc-atlas/` | All project docs, `.docatlas.json`, governance |
+| `.cursor/commands/` | Slash commands (required by Cursor) |
+| `.cursor/skills/` | Agent skills (required by Cursor) |
+| `AGENTS.md` (root) | Short pointer to `doc-atlas/` |

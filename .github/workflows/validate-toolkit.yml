@@ -30,8 +30,9 @@ jobs:
           echo '{"name":"test-app","description":"A test app","scripts":{"dev":"node index.js","test":"echo ok"}}' > /tmp/test-app/package.json
           echo '# Test App\n\n## Quick start\n\n```bash\nnpm install\nnpm run dev\n```' > /tmp/test-app/README.md
           node bin/docatlas.js init /tmp/test-app --force
-          test -f /tmp/test-app/docs/START_HERE.md
-          test -f /tmp/test-app/.docatlas.json
+          test -f /tmp/test-app/doc-atlas/docs/START_HERE.md
+          test -f /tmp/test-app/doc-atlas/.docatlas.json
+          test -f /tmp/test-app/.cursor/commands/docatlas-init.md
           node bin/docatlas.js drift /tmp/test-app
 
       - name: Verify VERSION

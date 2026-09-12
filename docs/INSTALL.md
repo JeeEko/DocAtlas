@@ -82,6 +82,8 @@ Use slash commands (copied into the project on `docatlas init`):
 
 The agent runs `docatlas` in your workspace terminal.
 
+All DocAtlas files live under **`doc-atlas/`** in your project.
+
 ---
 
 ## Update DocAtlas

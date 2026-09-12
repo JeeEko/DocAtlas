@@ -8,6 +8,7 @@ on:
       - 'src/**'
       - 'lib/**'
       - 'app/**'
+      - 'doc-atlas/**'
       - '.docatlas.json'
   workflow_dispatch:
 
@@ -24,7 +25,7 @@ jobs:
       - name: Check for DocAtlas
         id: check
         run: |
-          if [[ -f .docatlas.json || -f AGENTS.md ]]; then
+          if [[ -f doc-atlas/.docatlas.json || -f .docatlas.json || -f AGENTS.md ]]; then
             echo "present=true" >> "$GITHUB_OUTPUT"
           else
             echo "present=false" >> "$GITHUB_OUTPUT"
@@ -33,26 +34,11 @@ jobs:
       - name: Run drift check
         if: steps.check.outputs.present == 'true'
         run: |
-          chmod +x scripts/check-doc-drift.sh 2>/dev/null || true
-          if [[ -x scripts/check-doc-drift.sh ]]; then
-            ./scripts/check-doc-drift.sh --strict
+          if command -v docatlas >/dev/null 2>&1; then
+            docatlas drift --strict
           else
-            echo "Running inline drift checks..."
-            issues=0
-            for f in AGENTS.md docs/ARCHITECTURE.md docs/ONBOARDING.md docs/RUNBOOK.md docs/GLOSSARY.md; do
-              if [[ ! -f "$f" ]]; then
-                echo "[drift] missing: $f"
-                issues=$((issues + 1))
-              fi
-            done
-            if grep -rE 'TODO|TBD|__JOURNEY_NAME__|PLACEHOLDER' docs/ AGENTS.md 2>/dev/null; then
-              echo "[drift] unresolved placeholders found"
-              issues=$((issues + 1))
-            fi
-            if [[ "$issues" -gt 0 ]]; then
-              exit 1
-            fi
-            echo "[drift] no issues found"
+            npm install -g github:JeeEko/DocAtlas
+            docatlas drift --strict
           fi
 
       - name: Skip (DocAtlas not bootstrapped)

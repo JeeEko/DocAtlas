@@ -84,7 +84,7 @@ async function main() {
         bootstrapProject(projectRoot, { ...flags, force: flags.force, journeyName: flags.journeyName || scan.journey });
         applyJourneyPlaceholder(projectRoot, flags.journeyName || scan.journey);
         if (!flags.skipDraft) draftDocumentation(projectRoot, scan, flags.journeyName || scan.journey);
-        console.log('Bootstrap complete. Open docs/START_HERE.md');
+        console.log('Bootstrap complete. Open doc-atlas/docs/START_HERE.md');
         break;
       }
       case 'refine':
