@@ -6,6 +6,7 @@ import { getToolkitRoot, readVersion } from '../lib/paths.js';
 import { bootstrapProject, applyJourneyPlaceholder } from '../lib/bootstrap.js';
 import { scanProject } from '../lib/scan.js';
 import { draftDocumentation } from '../lib/draft.js';
+import { runRefineCommand } from '../lib/refine-cli.js';
 
 const args = process.argv.slice(2);
 
@@ -14,7 +15,8 @@ function help() {
 DocAtlas — Learn the project. Write it down. Keep it updated.
 
 USAGE
-  docatlas init [options]     One command: add docs + auto-draft (recommended)
+  docatlas init [options]     Add docs + auto-draft (start here)
+  docatlas refine [options]   Trace main user flow in code (step 2)
   docatlas drift [options]    Check for missing or placeholder docs
   docatlas version            Show version
   docatlas help               Show this message
@@ -25,15 +27,17 @@ INIT OPTIONS
   --no-governance         Skip PR checklist and GOVERNANCE folder
   --scaffold-only         Copy templates only (no auto-draft)
 
+REFINE OPTIONS
+  --journey-name <name>   Override journey name (default: from .docatlas.json)
+
 DRIFT OPTIONS
   --strict                Exit with error if issues found
 
 EXAMPLES
   cd your-project
-  npx docatlas init
-
-  npm install -g docatlas
-  docatlas init
+  npx github:JeeEko/DocAtlas init
+  npx github:JeeEko/DocAtlas refine
+  npx github:JeeEko/DocAtlas drift
 
 More: https://github.com/JeeEko/DocAtlas
 `);
@@ -80,6 +84,9 @@ async function main() {
         console.log('Bootstrap complete. Open docs/START_HERE.md');
         break;
       }
+      case 'refine':
+        runRefineCommand(projectRoot, flags);
+        break;
       case 'drift': {
         const { issues, exitCode } = checkDrift(projectRoot, { strict: flags.strict });
         console.log(`[drift] checking ${projectRoot}`);

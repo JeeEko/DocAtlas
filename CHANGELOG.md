@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 — 2026-09-12
+
+- **New:** `docatlas refine` — trace user flow in code, write `docs/JOURNEY-*.md` (no Cursor prompt)
+
 ## 1.1.0 — 2026-09-12
 
 - **New:** `docatlas init` — one command setup + auto-draft (Node.js, works on Windows)

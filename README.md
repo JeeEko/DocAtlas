@@ -8,30 +8,22 @@ Repository: https://github.com/JeeEko/DocAtlas
 
 ---
 
-## Quick start (recommended)
+## Quick start (3 commands)
 
 ```bash
 cd your-project
 npx github:JeeEko/DocAtlas init
+npx github:JeeEko/DocAtlas refine
+npx github:JeeEko/DocAtlas drift
 ```
 
-When published to npm:
+Works on **Windows, macOS, and Linux** (Node.js 18+). No Git Bash. No long prompts.
 
-```bash
-npx docatlas init
-```
-
-That’s it. Open **`docs/START_HERE.md`** when it finishes.
-
-### Install globally (optional)
-
-```bash
-npm install -g docatlas
-cd your-project
-docatlas init
-```
-
-Works on **Windows, macOS, and Linux** (Node.js 18+). No Git Bash required.
+| Command | What it does |
+|---------|----------------|
+| `docatlas init` | Add docs + first draft from README/code |
+| `docatlas refine` | Trace main user flow through the code |
+| `docatlas drift` | Check docs are complete |
 
 ---
 
@@ -39,9 +31,8 @@ Works on **Windows, macOS, and Linux** (Node.js 18+). No Git Bash required.
 
 1. **Adds** doc files, `AGENTS.md`, Cursor rules, optional PR checklist  
 2. **Drafts** content from your README, `package.json`, and folder structure  
-3. **Guesses** a main user flow name (e.g. checkout) — you can refine later in Cursor  
 
-Guessed content is marked **`[likely]`**. After you run the app, upgrade to **`[verified]`**.
+Then run **`docatlas refine`** to trace the main user flow (catalog → cart → checkout, etc.) and write `docs/JOURNEY-*.md`.
 
 ---
 
@@ -49,10 +40,9 @@ Guessed content is marked **`[likely]`**. After you run the app, upgrade to **`[
 
 | Command | Purpose |
 |---------|---------|
-| `docatlas init` | Set up + auto-draft (start here) |
-| `docatlas drift` | Find missing docs or leftover placeholders |
-| `docatlas init --force` | Re-run on a project that already has DocAtlas |
-| `docatlas init --journey-name "Checkout"` | Pick the main flow name yourself |
+| `docatlas init` | Set up + auto-draft (step 1) |
+| `docatlas refine` | Trace user flow in code (step 2) |
+| `docatlas drift` | Find missing docs or placeholders |
 
 ---
 

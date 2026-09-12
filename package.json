@@ -1,6 +1,6 @@
 {
   "name": "docatlas",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "One command to add and draft project documentation for developers and AI agents.",
   "type": "module",
   "repository": {

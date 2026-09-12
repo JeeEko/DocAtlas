@@ -2,100 +2,40 @@ name: Validate DocAtlas toolkit
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, 'cursor/**']
   pull_request:
-  workflow_dispatch:
-
-permissions:
-  contents: read
+    branches: [main]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Verify required files
-        run: |
-          required=(
-            README.md
-            VERSION
-            CHANGELOG.md
-            docatlas.manifest.yaml
-            bootstrap.sh
-            install.sh
-            package.json
-            bin/docatlas
-            docs/TEAM_SETUP.md
-            GOVERNANCE/README.md
-            scripts/check-doc-drift.sh
-            scripts/install-toolkit.sh
-            templates/AGENTS.md
-            templates/.docatlas.json
-            templates/docs/ARCHITECTURE.md
-            prompts/discovery.md
-            runners/cloud-agent-task.md
-          )
-          missing=0
-          for f in "${required[@]}"; do
-            if [[ ! -e "$f" ]]; then
-              echo "missing: $f"
-              missing=$((missing + 1))
-            fi
-          done
-          if [[ "$missing" -gt 0 ]]; then
-            exit 1
-          fi
-          echo "all required files present"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Verify executables
+      - name: Check required files
         run: |
-          for f in bootstrap.sh install.sh bin/docatlas scripts/check-doc-drift.sh scripts/install-toolkit.sh; do
-            test -x "$f" || { echo "not executable: $f"; exit 1; }
-          done
-          echo "executables OK"
+          test -f package.json
+          test -f bin/docatlas.js
+          test -f lib/init.js
+          test -f templates/docs/ONBOARDING.md
+          echo "Required files OK"
 
-      - name: Verify VERSION matches package.json
+      - name: Test docatlas init on temp project
         run: |
-          v=$(cat VERSION | tr -d '[:space:]')
-          pv=$(node -p "require('./package.json').version")
-          if [[ "$v" != "$pv" ]]; then
-            echo "VERSION ($v) != package.json ($pv)"
-            exit 1
-          fi
-          echo "version OK: $v"
+          mkdir -p /tmp/test-app
+          echo '{"name":"test-app","description":"A test app","scripts":{"dev":"node index.js","test":"echo ok"}}' > /tmp/test-app/package.json
+          echo '# Test App\n\n## Quick start\n\n```bash\nnpm install\nnpm run dev\n```' > /tmp/test-app/README.md
+          node bin/docatlas.js init /tmp/test-app --force
+          test -f /tmp/test-app/docs/START_HERE.md
+          test -f /tmp/test-app/.docatlas.json
+          node bin/docatlas.js drift /tmp/test-app
 
-      - name: CLI help and version
+      - name: Verify VERSION
         run: |
-          ./bin/docatlas help
-          ./bin/docatlas version
-
-      - name: Bootstrap smoke test
-        run: |
-          tmp=$(mktemp -d)
-          cd "$tmp"
-          "$GITHUB_WORKSPACE/bootstrap.sh" --journey-name "Smoke Test"
-          test -f AGENTS.md
-          test -f .docatlas.json
-          test -f docs/ARCHITECTURE.md
-          grep -q "Smoke Test" AGENTS.md
-          echo "bootstrap smoke test passed"
-
-      - name: Minimal bootstrap smoke test
-        run: |
-          tmp=$(mktemp -d)
-          cd "$tmp"
-          "$GITHUB_WORKSPACE/bootstrap.sh" --minimal --journey-name "Minimal Test"
-          test -f AGENTS.md
-          test -f .docatlas.json
-          test ! -f docs/ARCHITECTURE.md
-          echo "minimal bootstrap smoke test passed"
-
-      - name: Governance bootstrap smoke test
-        run: |
-          tmp=$(mktemp -d)
-          cd "$tmp"
-          "$GITHUB_WORKSPACE/bootstrap.sh" --with-governance --journey-name "Gov Test"
-          test -f GOVERNANCE/README.md
-          echo "governance bootstrap smoke test passed"
+          V=$(cat VERSION | tr -d '[:space:]')
+          node -e "const p=require('./package.json'); if(p.version!=='$V') process.exit(1)"
+          echo "Version $V OK"
