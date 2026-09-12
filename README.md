@@ -32,9 +32,9 @@ docatlas refine
 docatlas drift
 ```
 
-### Cursor (recommended)
+### Cursor (after first terminal init)
 
-Open the project in Cursor. After `docatlas init`, use slash commands:
+Slash commands (`/docatlas-init`, etc.) are **not global** — they are copied into each project on `docatlas init`. Run `docatlas init` in the terminal once first, then use:
 
 | Slash command | What runs |
 |---------------|-----------|

@@ -61,18 +61,22 @@ Then use `npx docatlas ...` **only inside that repo**, or add to `package.json`:
 
 ## After install — in any project
 
-**Terminal:**
+### First time in a project (terminal required)
+
+Slash commands like `/docatlas-init` **do not exist until you run init once**. Cursor reads them from `.cursor/commands/`, which DocAtlas creates during init.
 
 ```bash
 cd your-project
-docatlas init
+docatlas init --with-governance
 docatlas refine
 docatlas drift
 ```
 
-**Cursor (in the opened project):**
+Reload the Cursor window if slash commands do not appear immediately.
 
-Use slash commands (copied into the project on `docatlas init`):
+### After init (Cursor or terminal)
+
+**Cursor slash commands** (in `.cursor/commands/` after init):
 
 | Command | Action |
 |---------|--------|
