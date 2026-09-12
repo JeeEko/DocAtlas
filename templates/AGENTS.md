@@ -32,10 +32,22 @@ Then use **slash commands** in this repo:
 
 Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.cursor/skills/`.
 
+## DocAtlas workflow (always in order)
+
+| Step | Command | Who |
+|------|---------|-----|
+| 1 | `docatlas init` | CLI — once per project |
+| 2 | `docatlas refine` | CLI — trace routes |
+| 3 | **`/docatlas-discovery`** | **Agent — required quality pass** |
+| 4 | `docatlas drift` | CLI — verify before commit |
+| 5 | commit `doc-atlas/` | Human |
+
+Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until discovery confirms them.
+
 ## Rules for agents
 
 1. **Read before you change** — `doc-atlas/docs/START_HERE.md` first
-2. **Prefer DocAtlas CLI** — run `docatlas refine` / `docatlas drift`; discovery is from repo structure, not domain templates
+2. **Follow the DocAtlas loop** — init → refine → **discovery** → drift (never skip discovery)
 3. **Update docs in the same PR** — Code and docs stay in sync
 4. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]` (see `doc-atlas/GOVERNANCE/CONFIDENCE_TAGS.md`)
 5. **Plain language** — Write for a smart developer new to this repo

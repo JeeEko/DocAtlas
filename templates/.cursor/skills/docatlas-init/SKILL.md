@@ -21,9 +21,11 @@ Run the **installed** DocAtlas CLI in the project root. Do not use `npx` unless 
 
    Add `--force` only if user confirms reset. Add `--journey-name "Name"` if user provided one.
 
-3. Run `docatlas drift` and report.
+3. Tell user the full loop:
 
-4. Point user to `doc-atlas/docs/START_HERE.md` and `/docatlas-refine` as next step.
+   **refine → discovery → drift → commit**
+
+4. Point user to `doc-atlas/docs/START_HERE.md` and **`/docatlas-refine`** as next step (not drift yet).
 
 ## Output layout
 

@@ -14,8 +14,13 @@ docatlas init --with-governance
 
 Use `--force` only if DocAtlas already exists and the user wants to reset.
 
-3. Run `docatlas drift` and report the result.
-4. Tell the user to open `doc-atlas/docs/START_HERE.md`.
+3. Tell the user the **DocAtlas loop** (do not run drift yet):
+
+```
+docatlas refine  →  /docatlas-discovery  →  docatlas drift  →  commit
+```
+
+4. Tell the user to open `doc-atlas/docs/START_HERE.md` and run `/docatlas-refine` next.
 
 ## Arguments
 
@@ -29,7 +34,7 @@ docatlas init --journey-name "TheirFlowName" --with-governance
 
 - `doc-atlas/` populated (docs, governance, config)
 - `.cursor/commands` and `.cursor/skills` for slash commands
-- User knows next step: `/docatlas-refine` or `docatlas refine`
+- User knows next step: `/docatlas-refine` (then **discovery**, then drift)
 
 ## Layout
 

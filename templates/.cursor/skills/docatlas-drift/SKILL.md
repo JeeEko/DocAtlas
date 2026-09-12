@@ -1,16 +1,20 @@
 ---
 name: docatlas-drift
-description: Run docatlas drift to check documentation completeness. Use before commits or when the user runs /docatlas-drift.
+description: Run docatlas drift to check documentation completeness. Use after discovery or when the user runs /docatlas-drift.
 ---
 
 # DocAtlas drift skill
 
 ## Steps
 
-1. Run in project root:
+1. Confirm `/docatlas-discovery` was run (docs filled in, not just auto-drafts). If unsure, run discovery first.
+
+2. Run in project root:
 
    ```bash
    docatlas drift
    ```
 
-2. Report results. If issues, suggest `docatlas refine` or targeted doc edits.
+3. Report results. If issues, suggest `/docatlas-discovery` or `/docatlas-refine`.
+
+4. If clean, tell user to commit `doc-atlas/`.

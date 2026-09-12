@@ -68,11 +68,14 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 
 ```
 1. npm install -g github:JeeEko/DocAtlas     ← once on your machine
-2. docatlas init                             ← or /docatlas-init in Cursor
-3. docatlas refine                           ← or /docatlas-refine
-4. docatlas drift                            ← or /docatlas-drift
-5. commit docs
+2. docatlas init                             ← scaffold
+3. docatlas refine                           ← trace routes (automated)
+4. /docatlas-discovery                       ← required — fill in docs from code
+5. docatlas drift                            ← verify before commit
+6. commit doc-atlas/
 ```
+
+Cursor equivalents: `/docatlas-init` → `/docatlas-refine` → **`/docatlas-discovery`** → `/docatlas-drift`
 
 ---
 
@@ -82,6 +85,7 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 |---------|------|
 | `docatlas init` | Add docs + first draft |
 | `docatlas refine` | Trace routes with framework parsers (target ≥90% coverage) |
+| **`/docatlas-discovery`** | **Required** — agent fills in accurate docs from code |
 | `docatlas drift` | Verify docs complete |
 
 ---

@@ -69,6 +69,7 @@ Slash commands like `/docatlas-init` **do not exist until you run init once**. C
 cd your-project
 docatlas init --with-governance
 docatlas refine
+# /docatlas-discovery in Cursor — required before drift
 docatlas drift
 ```
 
