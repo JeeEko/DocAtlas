@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 — 2026-09-12
+
+- Cursor slash commands: `/docatlas-init`, `/docatlas-refine`, `/docatlas-drift`
+- Skills run installed `docatlas` CLI (no npx for daily use)
+- [docs/INSTALL.md](docs/INSTALL.md) — install once globally
+
 ## 1.2.0 — 2026-09-12
 
 - **New:** `docatlas refine` — trace user flow in code, write `docs/JOURNEY-*.md` (no Cursor prompt)

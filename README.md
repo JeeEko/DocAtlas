@@ -2,56 +2,67 @@
 
 **Learn the project. Write it down. Keep it updated.**
 
-One npm package. One command. DocAtlas adds documentation to your repo and **drafts a first version** from your README and code layout.
-
 Repository: https://github.com/JeeEko/DocAtlas
 
 ---
 
-## Quick start (3 commands)
+## Install once (per machine)
+
+```bash
+npm install -g github:JeeEko/DocAtlas
+docatlas version
+```
+
+See [docs/INSTALL.md](docs/INSTALL.md) for Windows PATH notes.
+
+**Do not use `npx` for daily work** — only for install if you prefer not to install globally.
+
+---
+
+## In your project
+
+### Terminal
 
 ```bash
 cd your-project
-npx github:JeeEko/DocAtlas init
-npx github:JeeEko/DocAtlas refine
-npx github:JeeEko/DocAtlas drift
+docatlas init
+docatlas refine
+docatlas drift
 ```
 
-Works on **Windows, macOS, and Linux** (Node.js 18+). No Git Bash. No long prompts.
+### Cursor (recommended)
 
-| Command | What it does |
-|---------|----------------|
-| `docatlas init` | Add docs + first draft from README/code |
-| `docatlas refine` | Trace main user flow through the code |
-| `docatlas drift` | Check docs are complete |
+Open the project in Cursor. After `docatlas init`, use slash commands:
 
----
+| Slash command | What runs |
+|---------------|-----------|
+| `/docatlas-init` | Set up docs in this repo |
+| `/docatlas-refine` | Trace user flow in code |
+| `/docatlas-drift` | Check docs are complete |
 
-## What `docatlas init` does
-
-1. **Adds** doc files, `AGENTS.md`, Cursor rules, optional PR checklist  
-2. **Drafts** content from your README, `package.json`, and folder structure  
-
-Then run **`docatlas refine`** to trace the main user flow (catalog → cart → checkout, etc.) and write `docs/JOURNEY-*.md`.
+The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 
 ---
 
-## Other commands
+## Full cycle
 
-| Command | Purpose |
-|---------|---------|
-| `docatlas init` | Set up + auto-draft (step 1) |
-| `docatlas refine` | Trace user flow in code (step 2) |
-| `docatlas drift` | Find missing docs or placeholders |
+```
+1. npm install -g github:JeeEko/DocAtlas     ← once on your machine
+2. docatlas init                             ← or /docatlas-init in Cursor
+3. docatlas refine                           ← or /docatlas-refine
+4. docatlas drift                            ← or /docatlas-drift
+5. commit docs
+```
 
 ---
 
-## After init
+## Commands
 
-1. Read `docs/START_HERE.md`  
-2. Run your app; fix anything wrong in `docs/RUNBOOK.md`  
-3. In Cursor: *“Refine docs for journey X using docatlas-discovery skill”*  
-4. `docatlas drift` before you commit  
+| Command | Step |
+|---------|------|
+| `docatlas init` | Add docs + first draft |
+| `docatlas refine` | Trace user flow → `docs/JOURNEY-*.md` |
+| `docatlas drift` | Verify docs complete |
 
 ---
 

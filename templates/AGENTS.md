@@ -10,36 +10,46 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 | File | Purpose |
 |------|---------|
+| `docs/START_HERE.md` | **Read first** — 2-minute orientation |
+| `docs/JOURNEY-*.md` | Main user flow traced in code |
 | `docs/ARCHITECTURE.md` | System design and components |
 | `docs/ONBOARDING.md` | New developer setup guide |
 | `docs/RUNBOOK.md` | Run, deploy, troubleshoot |
 | `docs/GLOSSARY.md` | Terms and abbreviations |
 
+## DocAtlas in Cursor (preferred)
+
+User should install once: `npm install -g github:JeeEko/DocAtlas`
+
+Then use **slash commands** in this repo:
+
+| Command | Runs |
+|---------|------|
+| `/docatlas-init` | `docatlas init` |
+| `/docatlas-refine` | `docatlas refine` |
+| `/docatlas-drift` | `docatlas drift` |
+
+Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.cursor/skills/`.
+
 ## Rules for agents
 
-1. **Read before you change** — Check existing docs before editing code that affects behavior
-2. **Update docs in the same PR** — Code and docs should stay in sync
-3. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]`, `[planned]` (see `GOVERNANCE/CONFIDENCE_TAGS.md` if present)
-4. **Run drift check** — Execute `docatlas drift` before finishing doc work
-5. **Plain language** — Write for a smart developer who is new to this repo
+1. **Read before you change** — `docs/START_HERE.md` first
+2. **Prefer DocAtlas CLI** — run `docatlas refine` / `docatlas drift` instead of reinventing long discovery prompts
+3. **Update docs in the same PR** — Code and docs stay in sync
+4. **Use confidence tags** — `[verified]`, `[likely]`, `[uncertain]` (see `GOVERNANCE/CONFIDENCE_TAGS.md`)
+5. **Plain language** — Write for a smart developer new to this repo
 
 ## When to update which doc
 
 | Change | Update |
 |--------|--------|
-| New feature or API | ARCHITECTURE, RUNBOOK |
+| New feature or API | ARCHITECTURE, RUNBOOK, JOURNEY |
 | New env var or setup step | ONBOARDING, RUNBOOK |
 | New domain term | GLOSSARY |
-| CI or deploy change | RUNBOOK |
+| User flow changed | JOURNEY doc |
 
 ## Do not
 
 - Invent features not present in the codebase
 - Mark docs `[verified]` without confirming against code or tests
-- Remove existing team documentation without reason
-
-## Toolkit
-
-- DocAtlas: https://github.com/JeeEko/DocAtlas
-- Drift check: `docatlas drift`
-- Bootstrap: `docatlas bootstrap --journey-name "__JOURNEY_NAME__"`
+- Tell users to run `npx github:JeeEko/DocAtlas` if `docatlas` is installed globally

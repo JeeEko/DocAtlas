@@ -33,11 +33,14 @@ REFINE OPTIONS
 DRIFT OPTIONS
   --strict                Exit with error if issues found
 
+INSTALL (once per machine)
+  npm install -g github:JeeEko/DocAtlas
+
 EXAMPLES
   cd your-project
-  npx github:JeeEko/DocAtlas init
-  npx github:JeeEko/DocAtlas refine
-  npx github:JeeEko/DocAtlas drift
+  docatlas init
+  docatlas refine
+  docatlas drift
 
 More: https://github.com/JeeEko/DocAtlas
 `);
