@@ -21,10 +21,18 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 
 ## 4. Human + agent finish the job
 
-- DocAtlas **scaffolds and traces** — it does not replace thoughtful writing.
-- Cursor skills and drift checks keep docs updated after the first pass.
+- DocAtlas **scaffolds and traces** technical structure; **discovery** fills business context and verified rules.
+- Do not invent business rules in automated steps — extract from README, tests, validation code, and stakeholders.
 
-## 5. Minimal assumptions about stack
+## 5. Business vs technical docs
+
+| Doc | Purpose |
+|-----|---------|
+| `BUSINESS.md` | Why the product exists, who uses it, rules and capabilities |
+| `ARCHITECTURE.md` | How it is built |
+| `JOURNEY-*.md` | Where flows live in code |
+
+## 6. Minimal assumptions about stack
 
 - Detect stack from `package.json` and apply **framework parsers** (Next.js, NestJS, Express/Hono/Fastify, React Router, OpenAPI, etc.).
 - Parsers extract routes from code — they do not assume business domain.

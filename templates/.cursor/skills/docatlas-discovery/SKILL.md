@@ -40,6 +40,7 @@ Find:
 
 | File | Focus |
 |------|-------|
+| `doc-atlas/docs/BUSINESS.md` | Problem, users, capabilities, business rules (from evidence) |
 | `doc-atlas/docs/ARCHITECTURE.md` | Components, data flow, dependencies |
 | `doc-atlas/docs/ONBOARDING.md` | Prerequisites, setup, first tasks |
 | `doc-atlas/docs/RUNBOOK.md` | Dev, build, deploy, troubleshooting |

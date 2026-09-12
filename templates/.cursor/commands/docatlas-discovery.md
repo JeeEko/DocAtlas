@@ -13,6 +13,7 @@ Use this **after** `docatlas init` and usually **after** `docatlas refine` — w
 3. Orient: `doc-atlas/docs/START_HERE.md`, `doc-atlas/.docatlas.json`, README, package files.
 4. Explore the codebase (entry points, env vars, CI, deploy config).
 5. Update docs with confidence tags:
+   - `doc-atlas/docs/BUSINESS.md` — problem, users, business rules
    - `doc-atlas/docs/ARCHITECTURE.md` — components, data flow
    - `doc-atlas/docs/ONBOARDING.md` — setup, first tasks
    - `doc-atlas/docs/RUNBOOK.md` — dev, build, deploy, troubleshoot
