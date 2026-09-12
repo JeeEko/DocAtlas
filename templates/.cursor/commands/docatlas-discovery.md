@@ -1,35 +1,41 @@
 # DocAtlas discovery
 
-> **Slash command** — you run **`/docatlas-discovery`** in Cursor chat.  
-> Pairs with agent skill **`docatlas-skill-discovery`** (`.cursor/skills/docatlas-skill-discovery/`).
+> **Slash command** — run **`/docatlas-discovery`** in Cursor chat. This file is the full procedure.
 
-**Required step** in the DocAtlas loop: init → refine → **discovery** → drift.
+**Required** loop step: init → refine → **discovery** → drift.
 
-Deep exploration pass: read the codebase and **fill in** DocAtlas docs with verified detail.
-
-Use this **after** `docatlas init` and **`/docatlas-refine`**.
+Deep exploration: read the codebase and fill in DocAtlas docs with verified detail. Use **after** `docatlas init` and **`/docatlas-refine`**.
 
 ## Procedure
 
-1. Confirm `doc-atlas/` exists (`.docatlas.json`). If not, run **`/docatlas-init`** first.
-2. Follow skill **`docatlas-skill-discovery`** (read `.cursor/skills/docatlas-skill-discovery/SKILL.md` fully).
-3. Orient: `doc-atlas/docs/START_HERE.md`, `doc-atlas/.docatlas.json`, README, package files.
-4. Explore the codebase (entry points, env vars, CI, deploy config, **business rules**).
-5. Update docs with confidence tags:
-   - `doc-atlas/docs/BUSINESS.md` — problem, users, business rules
-   - `doc-atlas/docs/ARCHITECTURE.md` — components, data flow
-   - `doc-atlas/docs/ONBOARDING.md` — setup, first tasks
-   - `doc-atlas/docs/RUNBOOK.md` — dev, build, deploy, troubleshoot
-   - `doc-atlas/docs/GLOSSARY.md` — domain terms
-6. Run `docatlas drift` and fix all issues.
+1. Confirm `doc-atlas/.docatlas.json` exists. If not, run **`/docatlas-init`** first.
+2. **Orient** — read in order:
+   - `AGENTS.md`, `doc-atlas/AGENTS.md`
+   - `doc-atlas/.docatlas.json`
+   - `doc-atlas/docs/START_HERE.md`
+   - README and package/config files
+3. **Explore** the codebase:
+   - Business context — README, validation rules, tests, domain models, user-facing copy
+   - Entry points, env vars, CI, deploy config
+4. **Update docs** (use confidence tags; `[verified]` only when confirmed):
+
+| File | Focus |
+|------|-------|
+| `doc-atlas/docs/BUSINESS.md` | Problem, users, capabilities, business rules |
+| `doc-atlas/docs/ARCHITECTURE.md` | Components, data flow |
+| `doc-atlas/docs/ONBOARDING.md` | Setup, first tasks |
+| `doc-atlas/docs/RUNBOOK.md` | Dev, build, deploy, troubleshoot |
+| `doc-atlas/docs/GLOSSARY.md` | Domain terms |
+
+5. Run `docatlas drift` and fix all issues.
 
 ## Do not
 
-- Skip reading the code — discovery is manual/agent depth, not `docatlas refine`
-- Mark `[verified]` without confirming against code or tests
-- Invent features not in the repo
+- Skip reading the code — this is the quality pass, not `docatlas refine`
+- Invent features or business rules — cite README, tests, or code
+- Mark `[verified]` without evidence
 
 ## Expected outcome
 
-- Docs upgraded from `[likely]` templates to accurate, readable guides
-- Drift clean or user informed of remaining gaps
+- Docs upgraded from `[likely]` to accurate guides
+- User proceeds to **`/docatlas-drift`** or `docatlas drift`

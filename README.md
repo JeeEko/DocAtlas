@@ -27,7 +27,7 @@ See [docs/INSTALL.md](docs/INSTALL.md) for Windows PATH notes.
 
 ## In your project
 
-DocAtlas writes everything under **`doc-atlas/`** in your repo. Cursor slash commands and skills stay in `.cursor/` (required by Cursor).
+DocAtlas writes everything under **`doc-atlas/`** in your repo. Cursor slash commands and rules stay in `.cursor/` (required by Cursor).
 
 ### Terminal
 
@@ -58,8 +58,8 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 | `doc-atlas/docs/` | START_HERE, **BUSINESS**, JOURNEY, ARCHITECTURE, etc. |
 | `doc-atlas/GOVERNANCE/` | PR checklist, confidence tags |
 | `doc-atlas/.docatlas.json` | DocAtlas config |
-| `.cursor/commands/` | **Slash commands** — `/docatlas-init`, etc. |
-| `.cursor/skills/` | **Agent skills** — `docatlas-skill-init`, etc. |
+| `.cursor/commands/` | **Slash commands only** — `/docatlas-init`, etc. |
+| `.cursor/rules/` | Agent rules for doc edits |
 | `AGENTS.md` (root) | Short pointer to `doc-atlas/` |
 
 ---
@@ -79,6 +79,8 @@ Cursor equivalents: `/docatlas-init` → `/docatlas-refine` → **`/docatlas-dis
 ---
 
 ## Commands
+
+See [docs/COMMANDS.md](docs/COMMANDS.md) for the full CLI vs slash command reference.
 
 | Command | Step |
 |---------|------|

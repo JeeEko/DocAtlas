@@ -39,10 +39,16 @@ DocAtlas must work on **any** software project. These rules guide toolkit change
 - Target **≥90% trace coverage** of detected pages and API routes; report gaps explicitly.
 - When a framework is unsupported, document what was found and leave gaps explicit.
 
-## 6. Accuracy over brevity
+## 7. Accuracy over brevity
 
 - `docatlas refine` maps detected routes to journey steps until coverage meets the target (default 90%).
 - Full route inventory lives in `ARCHITECTURE.md`; journey groups related UI + API paths.
+
+## 8. One Cursor entry point per step
+
+- Users run **slash commands** (`/docatlas-init`, `/docatlas-refine`, `/docatlas-discovery`, `/docatlas-drift`) — not separate skills.
+- Each command file in `.cursor/commands/` is a **self-contained procedure** the agent follows when invoked.
+- Do not ship parallel DocAtlas skills that duplicate command names or confuse what the user should type.
 
 ---
 

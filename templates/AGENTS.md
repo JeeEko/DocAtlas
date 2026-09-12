@@ -22,18 +22,16 @@ This project uses [DocAtlas](https://github.com/JeeEko/DocAtlas) for documentati
 
 User should install once: `npm install -g github:JeeEko/DocAtlas`
 
-Then use **slash commands** in this repo (what **you** type):
+Then use **slash commands** only (what you type in Cursor chat):
 
 | Slash command | Runs |
 |---------|------|
 | `/docatlas-init` | `docatlas init` |
 | `/docatlas-refine` | `docatlas refine` |
-| `/docatlas-discovery` | Agent deep-dive — fill in docs from code |
+| `/docatlas-discovery` | Deep-dive — fill in docs from code |
 | `/docatlas-drift` | `docatlas drift` |
 
-**Agent skills** (background — do not type these as commands): `docatlas-skill-init`, `docatlas-skill-refine`, `docatlas-skill-discovery`, `docatlas-skill-drift` in `.cursor/skills/`.
-
-Agents: slash commands in `.cursor/commands/` invoke skills in `.cursor/skills/`.
+Full procedure for each step lives in `.cursor/commands/docatlas-*.md`. Do not use a separate skill entry point — run the slash command.
 
 ## DocAtlas workflow (always in order)
 
@@ -41,7 +39,7 @@ Agents: slash commands in `.cursor/commands/` invoke skills in `.cursor/skills/`
 |------|---------|-----|
 | 1 | `docatlas init` | CLI — once per project |
 | 2 | `docatlas refine` | CLI — trace routes |
-| 3 | **`/docatlas-discovery`** | **Agent — required quality pass** |
+| 3 | **`/docatlas-discovery`** | Cursor — required quality pass |
 | 4 | `docatlas drift` | CLI — verify docs complete |
 
 Do **not** skip discovery. Auto-drafts and refine output are `[likely]` until discovery confirms them.

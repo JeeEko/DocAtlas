@@ -1,9 +1,17 @@
 # Changelog
 
+## 1.9.0 — 2026-09-12
+
+- **Commands-only Cursor UX** — removed DocAtlas agent skills; slash commands are the sole Cursor entry points
+- Each `.cursor/commands/docatlas-*.md` file is a self-contained procedure (no skill pairing)
+- Added [docs/COMMANDS.md](docs/COMMANDS.md) — CLI vs slash command reference
+- Design principle: one entry point per step, no duplicate skill names
+
 ## 1.8.1 — 2026-09-12
 
 - Rename agent skills to **`docatlas-skill-*`** (distinct from slash commands `/docatlas-*`)
 - Commands and skills document their pairing in file headers
+- *(Superseded in 1.9.0 — skills removed.)*
 
 ## 1.8.0 — 2026-09-12
 

@@ -77,7 +77,7 @@ Reload the Cursor window if slash commands do not appear immediately.
 
 ### After init (Cursor or terminal)
 
-**Slash commands** — what you type in chat (`/docatlas-*`):
+**Slash commands** — the only Cursor entry points (`/docatlas-*`):
 
 | Command | Action |
 |---------|--------|
@@ -86,9 +86,9 @@ Reload the Cursor window if slash commands do not appear immediately.
 | `/docatlas-discovery` | Deep-dive — fill in docs from code |
 | `/docatlas-drift` | Check documentation |
 
-**Agent skills** — `docatlas-skill-*` in `.cursor/skills/` (for the agent, not typed by you).
+Procedures live in `.cursor/commands/`. There are no separate DocAtlas skills to invoke.
 
-The agent runs `docatlas` in your workspace terminal.
+See [COMMANDS.md](COMMANDS.md) for the full CLI vs slash command reference.
 
 All DocAtlas files live under **`doc-atlas/`** in your project.
 

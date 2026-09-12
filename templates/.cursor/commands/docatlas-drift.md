@@ -1,22 +1,21 @@
 # DocAtlas drift
 
-> **Slash command** — you run **`/docatlas-drift`** in Cursor chat.  
-> Pairs with agent skill **`docatlas-skill-drift`** (`.cursor/skills/docatlas-skill-drift/`).
+> **Slash command** — run **`/docatlas-drift`** in Cursor chat. This file is the full procedure.
 
-Check whether documentation matches the project.
+Check whether documentation is complete.
 
 ## Procedure
 
-1. Confirm **`/docatlas-discovery` was already run** (docs should have `[verified]` sections, not only `[likely]` templates). If not, run **`/docatlas-discovery`** first.
-2. Follow skill **`docatlas-skill-drift`** and run in the **workspace root**:
+1. Confirm **`/docatlas-discovery` was already run**. If docs are still mostly templates, run **`/docatlas-discovery`** first.
+2. Run in the **workspace root**:
 
 ```bash
 docatlas drift
 ```
 
-Use `docatlas drift --strict` if the user wants a failing exit on issues.
+Use `--strict` if the user wants a failing exit on issues.
 
-Report issues plainly. If problems exist, suggest **`/docatlas-discovery`** or **`/docatlas-refine`**.
+3. Report issues plainly. If problems exist, suggest **`/docatlas-discovery`** or **`/docatlas-refine`**.
 
 ## Expected outcome
 

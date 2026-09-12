@@ -1,7 +1,6 @@
 # DocAtlas init
 
-> **Slash command** — you run **`/docatlas-init`** in Cursor chat.  
-> Pairs with agent skill **`docatlas-skill-init`** (`.cursor/skills/docatlas-skill-init/`).
+> **Slash command** — run **`/docatlas-init`** in Cursor chat. This file is the full procedure.
 
 Set up DocAtlas documentation in **this workspace**.
 
@@ -9,7 +8,7 @@ Set up DocAtlas documentation in **this workspace**.
 
 1. Confirm `docatlas` is installed: run `docatlas version` in the project root.
    - If missing, tell the user to run once: `npm install -g github:JeeEko/DocAtlas`
-2. Follow skill **`docatlas-skill-init`** and run in the **workspace root**:
+2. Run in the **workspace root**:
 
 ```bash
 docatlas init --with-governance
@@ -17,32 +16,23 @@ docatlas init --with-governance
 
 Use `--force` only if DocAtlas already exists and the user wants to reset.
 
-3. Tell the user the **DocAtlas loop** (do not run drift yet):
+Add `--journey-name "Name"` if the user provided one.
+
+3. Tell the user the **DocAtlas loop**:
 
 ```
 docatlas refine  →  /docatlas-discovery  →  docatlas drift
 ```
 
-4. Tell the user to open `doc-atlas/docs/START_HERE.md` and run **`/docatlas-refine`** next.
+4. Point user to `doc-atlas/docs/START_HERE.md` and **`/docatlas-refine`** as next step (not drift yet).
 
-## Arguments
+## Do not
 
-Optional journey name from the user message → pass as:
-
-```bash
-docatlas init --journey-name "TheirFlowName" --with-governance
-```
+- Use `npx` if `docatlas` is installed globally
+- Run drift at this stage
 
 ## Expected outcome
 
 - `doc-atlas/` populated (docs, governance, config)
-- User knows next step: **`/docatlas-refine`** (then discovery, then drift)
-
-## Layout
-
-| Location | Contents |
-|----------|----------|
-| `doc-atlas/` | All project docs, `.docatlas.json`, governance |
-| `.cursor/commands/` | **Slash commands** (`/docatlas-*`) |
-| `.cursor/skills/` | **Agent skills** (`docatlas-skill-*`) |
-| `AGENTS.md` (root) | Short pointer to `doc-atlas/` |
+- `.cursor/commands/docatlas-*.md` copied for slash commands
+- User knows next step: **`/docatlas-refine`**
