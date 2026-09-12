@@ -55,7 +55,7 @@ The agent runs `docatlas` in your workspace — no long prompts, no `npx`.
 
 | Path | Purpose |
 |------|---------|
-| `doc-atlas/docs/` | START_HERE, JOURNEY, ARCHITECTURE, etc. |
+| `doc-atlas/docs/` | START_HERE, **BUSINESS**, JOURNEY, ARCHITECTURE, etc. |
 | `doc-atlas/GOVERNANCE/` | PR checklist, confidence tags |
 | `doc-atlas/.docatlas.json` | DocAtlas config |
 | `.cursor/commands/` | Slash commands |

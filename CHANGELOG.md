@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.0 — 2026-09-12
+
+- **New:** `doc-atlas/docs/BUSINESS.md` — problem, users, capabilities, business rules
+- Init auto-drafts from README; discovery fills rules from evidence (not invented)
+- Drift and discovery updated to include BUSINESS
+
 ## 1.7.1 — 2026-09-12
 
 - **Discovery is a required loop step:** init → refine → **discovery** → drift

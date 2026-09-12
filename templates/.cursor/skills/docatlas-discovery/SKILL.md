@@ -31,6 +31,7 @@ Read in order:
 
 Find:
 
+- **Business context** — README, product docs, validation rules, test names, domain models, user-facing copy
 - Entry points and main modules
 - Config and environment variables
 - Test and CI commands
@@ -60,7 +61,7 @@ Fix all reported issues before finishing.
 ## Rules
 
 - Plain English — explain like onboarding a smart new hire
-- No invented features
+- No invented features or **business rules** — cite README, tests, or code
 - Small accurate updates beat large speculative rewrites
 - Update `doc-atlas/AGENTS.md` if agent workflow conventions change
 
