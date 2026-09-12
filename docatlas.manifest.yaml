@@ -2,7 +2,7 @@
 # https://github.com/JeeEko/DocAtlas
 
 name: DocAtlas
-version: "4.0.0"
+version: "5.0.0"
 tagline: "Learn the project. Write it down. Keep it updated."
 repository: https://github.com/JeeEko/DocAtlas
 
@@ -13,6 +13,8 @@ cli:
     - refine
     - map-contexts
     - update
+    - query
+    - setup
     - doctor
     - drift
     - install-explorer
@@ -74,11 +76,13 @@ templates:
     - .cursor/agents/docatlas-data-analyzer.md
     - .cursor/agents/docatlas-system-analyzer.md
     - .cursor/agents/docatlas-infra-analyzer.md
+    - .cursor/agents/docatlas-docs-lookup.md
     - .cursor/rules/docatlas-core.mdc
     - .cursor/rules/docatlas-docs.mdc
   github:
     - .github/pull_request_template.md
     - .github/workflows/docatlas-drift-report.yml
+    - .github/workflows/docatlas-update-report.yml
 
 governance:
   optional: true
@@ -97,6 +101,9 @@ scripts:
   - scripts/test-parsers.mjs
   - scripts/test-business-contexts.mjs
   - scripts/test-freshness.mjs
+  - scripts/test-search.mjs
+  - scripts/test-health.mjs
 
 packages:
   - packages/explorer
+  - packages/mcp

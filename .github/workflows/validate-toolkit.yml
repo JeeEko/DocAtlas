@@ -16,16 +16,26 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install MCP dependencies
+        run: npm install --prefix packages/mcp
+
       - name: Check required files
         run: |
           test -f package.json
           test -f bin/docatlas.js
           test -f lib/init.js
+          test -f lib/search.js
+          test -f packages/mcp/src/index.js
           test -f templates/docs/ONBOARDING.md
           echo "Required files OK"
 
       - name: Test parser coverage (>= 90%)
         run: node scripts/test-parsers.mjs
+
+      - name: Test search and health
+        run: |
+          node scripts/test-search.mjs
+          node scripts/test-health.mjs
 
       - name: Test docatlas init on temp project
         run: |
@@ -40,10 +50,18 @@ jobs:
           test -f /tmp/test-app/doc-atlas/docs/business/CONTEXT-MAP.md
           test -f /tmp/test-app/doc-atlas/docs/AI_CONTEXT.md
           test -f /tmp/test-app/.cursor/skills/docatlas-skill-update/SKILL.md
+          test -f /tmp/test-app/.cursor/agents/docatlas-docs-lookup.md
           node scripts/test-business-contexts.mjs
           node scripts/test-freshness.mjs
           node bin/docatlas.js doctor /tmp/test-app
+          node bin/docatlas.js doctor /tmp/test-app --score
+          node bin/docatlas.js query /tmp/test-app "test app"
           node bin/docatlas.js drift /tmp/test-app
+
+      - name: Compile Explorer
+        run: |
+          npm install --prefix packages/explorer
+          npm run compile --prefix packages/explorer
 
       - name: Verify VERSION
         run: |

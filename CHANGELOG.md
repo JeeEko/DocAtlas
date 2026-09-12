@@ -1,5 +1,28 @@
 # Changelog
 
+## 5.0.0 — 2026-09-12
+
+- **Owner config** — `includePaths`, `excludePaths`, `agentRules`, `analyzedVersions` in `.docatlas.json`
+- **tRPC parser** — detects tRPC procedures in refine route inventory
+- **Version baselines** — `analyzedVersions[]` in freshness metadata; drift validates commits
+
+## 4.3.0 — 2026-09-12
+
+- **Explorer v1** — search, Mermaid preview, evidence link navigation, freshness badge ([specs/001-docatlas-explorer/spec.md](specs/001-docatlas-explorer/spec.md))
+
+## 4.2.0 — 2026-09-12
+
+- **`docatlas setup`** / **`docatlas setup --remove`** — MCP wiring for Cursor, Claude Code, VS Code
+- **`docatlas doctor --score`** — DocAtlas health score (0–100) with evidence and freshness metrics
+- **Update-on-push Action** — `.github/workflows/docatlas-update-report.yml`
+
+## 4.1.0 — 2026-09-12
+
+- **Agent retrieval layer** — `lib/search.js`, **`docatlas query`**, **`packages/mcp/`** MCP server
+- **MCP tools** — `query_project_docs`, `get_ai_context`, `get_business_context`, `get_journey`
+- **`docatlas-docs-lookup`** subagent for lightweight internal doc fetch
+- Updated `docatlas-core` rule and `/docatlas` orchestrator for MCP/query usage
+
 ## 4.0.0 — 2026-09-12
 
 - **DocAtlas Explorer** — scaffold VS Code/Cursor extension under `packages/explorer/` (viewer for `doc-atlas/docs/`)

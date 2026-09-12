@@ -11,9 +11,16 @@ This project uses DocAtlas (https://github.com/JeeEko/DocAtlas) for documentatio
 ## Before making changes
 
 1. Read `doc-atlas/docs/AI_CONTEXT.md` if it exists (compact orientation)
-2. Read `AGENTS.md` and `doc-atlas/docs/START_HERE.md`
-3. Check `doc-atlas/docs/` for architecture, onboarding, and runbook context
-4. If behavior changes, plan doc updates in the same change
+2. For internal project questions, prefer **`query_project_docs`** MCP tool or `docatlas query "<question>"` before reading the entire doc tree
+3. Read `AGENTS.md` and `doc-atlas/docs/START_HERE.md`
+4. Check `doc-atlas/docs/` for architecture, onboarding, and runbook context
+5. If behavior changes, plan doc updates in the same change
+
+## Runtime doc retrieval
+
+- **This repo:** DocAtlas MCP (`query_project_docs`, `get_ai_context`, `get_business_context`, `get_journey`) or `docatlas query`
+- **External libraries:** Context7 or similar — not DocAtlas
+- Optional: delegate to **`docatlas-docs-lookup`** subagent for focused internal lookups
 
 ## Architecture-sensitive work
 

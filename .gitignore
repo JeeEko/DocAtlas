@@ -1,0 +1,7 @@
+node_modules/
+packages/mcp/node_modules/
+packages/explorer/node_modules/
+packages/explorer/out/
+*.vsix
+package-lock.json
+packages/*/package-lock.json

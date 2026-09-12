@@ -6,5 +6,9 @@
   "lastAnalyzedCommit": null,
   "lastAnalyzedAt": null,
   "lastAnalyzedBranch": null,
+  "includePaths": [],
+  "excludePaths": [],
+  "agentRules": [],
+  "analyzedVersions": [],
   "repository": "https://github.com/JeeEko/DocAtlas"
 }

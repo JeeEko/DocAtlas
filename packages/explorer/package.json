@@ -2,7 +2,7 @@
   "name": "docatlas-explorer",
   "displayName": "DocAtlas Explorer",
   "description": "Browse doc-atlas documentation in VS Code and Cursor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "JeeEko",
   "engines": {
     "vscode": "^1.85.0"
@@ -23,8 +23,33 @@
       {
         "command": "docatlas.refresh",
         "title": "DocAtlas: Refresh"
+      },
+      {
+        "command": "docatlas.search",
+        "title": "DocAtlas: Search Docs"
+      },
+      {
+        "command": "docatlas.showFreshness",
+        "title": "DocAtlas: Show Freshness"
+      },
+      {
+        "command": "docatlas.previewMermaid",
+        "title": "DocAtlas: Preview Mermaid"
+      },
+      {
+        "command": "docatlas.openEvidence",
+        "title": "DocAtlas: Open Evidence Link"
       }
-    ]
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "docatlas.previewMermaid",
+          "when": "view == docatlasExplorer && viewItem == markdownDoc",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p .",
@@ -32,6 +57,7 @@
     "test": "node --test test/*.test.js"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.4.0"
   }

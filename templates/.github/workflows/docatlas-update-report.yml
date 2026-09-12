@@ -1,0 +1,45 @@
+name: DocAtlas update report
+
+on:
+  pull_request:
+    paths:
+      - '**/*'
+  push:
+    branches: [main, master]
+
+jobs:
+  update-report:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install DocAtlas
+        run: npm install -g github:JeeEko/DocAtlas
+
+      - name: Run docatlas update
+        id: update
+        run: |
+          docatlas update > update-report.txt 2>&1 || true
+          cat update-report.txt
+
+      - name: Comment impacted docs on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.existsSync('update-report.txt')
+              ? '## DocAtlas update report\n\n```\n' + fs.readFileSync('update-report.txt', 'utf8') + '\n```\n\nRun **docatlas-skill-update** in Cursor to refresh listed docs.'
+              : 'DocAtlas update report unavailable.';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });

@@ -54,6 +54,25 @@ docatlas install-explorer   # optional IDE viewer
 docatlas refine             # seeds integrations/ and system/ docs
 ```
 
+## v4.0 → v5.0
+
+**New:** agent retrieval layer, MCP server, multi-IDE setup, health score, Explorer v1, owner config, tRPC parser.
+
+```bash
+npm install -g github:JeeEko/DocAtlas
+docatlas init --force
+cd packages/mcp && npm install   # when running from source
+docatlas setup --cursor --claude --vscode --project
+```
+
+Adds:
+
+- `docatlas query`, `packages/mcp/` MCP tools
+- `docatlas-docs-lookup` agent
+- `docatlas setup`, `docatlas doctor --score`
+- `.github/workflows/docatlas-update-report.yml`
+- `.docatlas.json` fields: `includePaths`, `excludePaths`, `agentRules`, `analyzedVersions`
+
 ## Freshness
 
 After any upgrade, run discovery or update once to set:

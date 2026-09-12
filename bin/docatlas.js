@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from 'node:fs';
 import path from 'node:path';
 import { checkDrift } from '../lib/drift.js';
 import { runInit } from '../lib/init.js';
@@ -11,6 +12,8 @@ import { runMapContextsCommand } from '../lib/map-contexts-cli.js';
 import { runUpdateCommand } from '../lib/update-command.js';
 import { runDoctorCommand } from '../lib/doctor.js';
 import { runInstallExplorerCommand } from '../lib/install-explorer.js';
+import { runQueryCommand } from '../lib/query-cli.js';
+import { runSetupCommand, runSetupRemoveCommand } from '../lib/setup-cli.js';
 
 const args = process.argv.slice(2);
 
@@ -23,7 +26,9 @@ USAGE
   docatlas refine [options]   Trace main user flow in code (step 2)
   docatlas map-contexts       Detect business areas and scaffold context docs
   docatlas update             Analyze git diff and list docs needing refresh
-  docatlas doctor             Verify DocAtlas kit and required docs
+  docatlas query [options]    Search project docs (runtime retrieval)
+  docatlas setup [options]    Wire MCP + rules for Cursor / Claude / VS Code
+  docatlas doctor [options]   Verify DocAtlas kit and required docs
   docatlas install-explorer   Build and install DocAtlas Explorer VSIX
   docatlas drift [options]    Check for missing or placeholder docs
   docatlas version            Show version
@@ -43,6 +48,25 @@ REFINE OPTIONS
 MAP-CONTEXTS OPTIONS
   --force                 Overwrite existing context docs and CONTEXT-MAP.md
 
+QUERY OPTIONS
+  "<question>"            Search doc-atlas/ markdown
+  --limit <n>             Max results (default 5)
+  --json                  JSON output
+  --context <topic>       AI_CONTEXT + related sections
+  --ai-context            Print AI_CONTEXT.md only
+  --business <slug>       Print one business context doc
+  --journey <query>       Print matching JOURNEY-*.md files
+
+SETUP OPTIONS
+  --cursor                Configure Cursor MCP
+  --claude                Configure Claude Code MCP
+  --vscode                Configure VS Code MCP
+  --project               Project-local config (default: user-global)
+  --remove                Remove DocAtlas MCP wiring
+
+DOCTOR OPTIONS
+  --score                 Show DocAtlas health score (0–100)
+
 DRIFT OPTIONS
   --strict                Exit with error if issues found
   --semantic              Include route inventory and freshness checks
@@ -54,8 +78,11 @@ EXAMPLES
   cd your-project
   docatlas init
   docatlas refine
+  docatlas query "how does auth work?"
+  docatlas setup --cursor --project
   docatlas update           # after code changes — then docatlas-skill-update in Cursor
   /docatlas               # Cursor — full journey (init → refine → discovery → drift)
+  docatlas doctor --score
   docatlas drift
 
 More: https://github.com/JeeEko/DocAtlas
@@ -73,6 +100,16 @@ function parseFlags(argv) {
     minCoverage: 90,
     taxonomy: 'standard',
     skipBuild: false,
+    score: false,
+    json: false,
+    limit: 5,
+    contextTopic: '',
+    aiContext: false,
+    businessSlug: '',
+    journeyQuery: '',
+    project: false,
+    remove: false,
+    agents: [],
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -86,6 +123,18 @@ function parseFlags(argv) {
     else if (a === '--semantic') flags.semantic = true;
     else if (a === '--taxonomy') flags.taxonomy = argv[++i] ?? 'standard';
     else if (a === '--skip-build') flags.skipBuild = true;
+    else if (a === '--score') flags.score = true;
+    else if (a === '--json') flags.json = true;
+    else if (a === '--limit') flags.limit = Number(argv[++i] ?? 5);
+    else if (a === '--context') flags.contextTopic = argv[++i] ?? '';
+    else if (a === '--ai-context') flags.aiContext = true;
+    else if (a === '--business') flags.businessSlug = argv[++i] ?? '';
+    else if (a === '--journey') flags.journeyQuery = argv[++i] ?? '';
+    else if (a === '--project') flags.project = true;
+    else if (a === '--remove') flags.remove = true;
+    else if (a === '--cursor') flags.agents.push('cursor');
+    else if (a === '--claude') flags.agents.push('claude');
+    else if (a === '--vscode') flags.agents.push('vscode');
     else if (a.startsWith('-')) console.error(`Unknown option: ${a}`);
     else positional.push(a);
   }
@@ -120,8 +169,37 @@ async function main() {
       case 'update':
         runUpdateCommand(projectRoot);
         break;
+      case 'query': {
+        let queryRoot = projectRoot;
+        let queryParts = [...positional];
+        if (
+          queryParts.length > 1 &&
+          fs.existsSync(path.join(path.resolve(queryParts[0]), 'doc-atlas', '.docatlas.json'))
+        ) {
+          queryRoot = path.resolve(queryParts.shift());
+        }
+        const queryText = queryParts.join(' ').trim();
+        const code = runQueryCommand(queryRoot, queryText, {
+          limit: flags.limit,
+          json: flags.json,
+          contextTopic: flags.contextTopic,
+          aiContext: flags.aiContext,
+          businessSlug: flags.businessSlug,
+          journey: flags.journeyQuery,
+        });
+        process.exit(code);
+        break;
+      }
+      case 'setup': {
+        if (flags.remove) {
+          runSetupRemoveCommand(projectRoot, { agents: flags.agents, project: flags.project });
+        } else {
+          runSetupCommand(projectRoot, { agents: flags.agents, project: flags.project });
+        }
+        break;
+      }
       case 'doctor': {
-        const code = runDoctorCommand(projectRoot);
+        const code = runDoctorCommand(projectRoot, { score: flags.score });
         process.exit(code);
         break;
       }

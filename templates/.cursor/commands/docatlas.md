@@ -21,6 +21,16 @@ Do **not** skip phases. Do **not** invoke workflow skills directly — this comm
 
 Check `doc-atlas/.docatlas.json` for `lastAnalyzedCommit` and `doc-atlas/docs/AI_CONTEXT.md` freshness table.
 
+## Targeted internal doc lookups
+
+For questions about **this repository** during discovery or update (not external libraries):
+
+- Use **`docatlas-docs-lookup`** subagent, or
+- MCP: `query_project_docs` / `get_business_context` / `get_journey`, or
+- CLI: `docatlas query "<question>"`
+
+Run `docatlas setup --cursor --project` once to wire MCP if tools are unavailable.
+
 ## Detect starting phase (full journey)
 
 | State | Start at |
