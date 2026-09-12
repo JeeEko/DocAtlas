@@ -27,6 +27,7 @@ Then use **slash commands** in this repo:
 |---------|------|
 | `/docatlas-init` | `docatlas init` |
 | `/docatlas-refine` | `docatlas refine` |
+| `/docatlas-discovery` | Agent deep-dive — fill in docs from code |
 | `/docatlas-drift` | `docatlas drift` |
 
 Agents: follow `.cursor/commands/docatlas-*.md` or matching skills under `.cursor/skills/`.

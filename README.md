@@ -45,7 +45,8 @@ Slash commands (`/docatlas-init`, etc.) are **not global** — they are copied i
 | Slash command | What runs |
 |---------------|-----------|
 | `/docatlas-init` | Set up docs in this repo |
-| `/docatlas-refine` | Trace user flow in code |
+| `/docatlas-refine` | Trace routes in code (automated) |
+| `/docatlas-discovery` | Deep-dive — fill in docs from code |
 | `/docatlas-drift` | Check docs are complete |
 
 The agent runs `docatlas` in your workspace — no long prompts, no `npx`.

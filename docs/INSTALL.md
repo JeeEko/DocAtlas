@@ -81,7 +81,8 @@ Reload the Cursor window if slash commands do not appear immediately.
 | Command | Action |
 |---------|--------|
 | `/docatlas-init` | Set up docs in this repo |
-| `/docatlas-refine` | Trace user flow in code |
+| `/docatlas-refine` | Trace routes in code (automated) |
+| `/docatlas-discovery` | Deep-dive — fill in docs from code |
 | `/docatlas-drift` | Check documentation |
 
 The agent runs `docatlas` in your workspace terminal.
