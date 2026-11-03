@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Cursor Platform branch only
+
+- `docatlas init --cursor-native`, Automations prompts, `packages/cursor-plugin/`
+- Branch policy: fork from `main`, never merge to `main` ([docs/BRANCHING.md](docs/BRANCHING.md))
+
+## 5.0.1 — main
+
+- **Branching policy** — `main` is canonical v5; Cursor Platform on `cursor/cursor-native-95c0` (separate line)
+- Merged v5.0.0 agent retrieval, MCP, setup, Explorer v1 to `main`
+
 ## 5.0.0 — 2026-09-12
 
 - **Owner config** — `includePaths`, `excludePaths`, `agentRules`, `analyzedVersions` in `.docatlas.json`

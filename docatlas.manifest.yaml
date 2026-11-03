@@ -107,3 +107,13 @@ scripts:
 packages:
   - packages/explorer
   - packages/mcp
+  - packages/cursor-plugin
+
+distributions:
+  main:
+    branch: main
+    init: docatlas init
+  cursor_platform:
+    branch: cursor/cursor-native-95c0
+    init: docatlas init --cursor-native
+    mergePolicy: never-to-main

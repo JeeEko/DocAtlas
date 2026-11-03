@@ -1,0 +1,4 @@
+{
+  "install": "npm install -g github:JeeEko/DocAtlas#cursor/cursor-native-95c0",
+  "start": "docatlas doctor || true"
+}

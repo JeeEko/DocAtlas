@@ -5,3 +5,8 @@ packages/explorer/out/
 *.vsix
 package-lock.json
 packages/*/package-lock.json
+packages/cursor-plugin/rules/
+packages/cursor-plugin/skills/
+packages/cursor-plugin/agents/
+packages/cursor-plugin/commands/
+packages/cursor-plugin/server/

@@ -20,6 +20,12 @@ Agent retrieval (`query`, MCP), multi-IDE `setup`, doctor `--score`, Explorer v1
 
 Semantic index, GraphQL parser, enterprise import, headless discovery — see issues and prior plan artifacts.
 
-## Cursor Platform line (separate branch)
+## Cursor Platform line (`cursor/cursor-native-95c0`)
 
-Marketplace plugin, `--cursor-native`, Automations prompts — tracked on **`cursor/cursor-native-95c0` only**; port **core** fixes from `main`, never merge the branch into `main`.
+**Never merge to `main`.** Subsequent branch from each `main` release.
+
+| ID | Item |
+|----|------|
+| CN.1 | `--cursor-native` + automation prompts | On cursor branch |
+| CN.2 | Marketplace plugin build + publish | Planned |
+| CN.3 | Rebase cursor branch after each `main` tag | Ongoing maintainer task |

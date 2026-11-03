@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "docatlas": {
+      "command": "node",
+      "args": ["${CURSOR_PLUGIN_ROOT}/server/src/index.js"],
+      "env": { "DOCATLAS_PROJECT_ROOT": "${workspaceFolder}" }
+    }
+  }
+}

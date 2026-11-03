@@ -1,0 +1,18 @@
+---
+description: DocAtlas Cursor Platform — Automations-first doc sync (cursor-native branch)
+alwaysApply: true
+---
+
+# DocAtlas Cursor Platform
+
+This project was initialized from the **Cursor Platform** line (`distribution: cursor`, branch `cursor/cursor-native-95c0`). That line is **not merged into `main`** — see toolkit `docs/BRANCHING.md`.
+
+## Background doc sync
+
+- Use **Cursor Automations** and prompts under `doc-atlas/cursor/prompts/`
+- GitHub Action templates are optional (`--with-github-actions` at init)
+- Run `docatlas update` and `docatlas drift` before LLM doc edits
+
+## In-session changes
+
+Follow `docatlas-skill-update` for architecture-sensitive work; use MCP `query_project_docs` before rewriting large doc sections.

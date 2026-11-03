@@ -37,6 +37,13 @@ jobs:
           node scripts/test-search.mjs
           node scripts/test-health.mjs
 
+      - name: Test cursor-native (Cursor Platform branch only)
+        if: github.ref == 'refs/heads/cursor/cursor-native-95c0'
+        run: |
+          node scripts/test-cursor-native.mjs
+          node scripts/build-cursor-plugin.mjs
+          test -f packages/cursor-plugin/server/src/index.js
+
       - name: Test docatlas init on temp project
         run: |
           mkdir -p /tmp/test-app
