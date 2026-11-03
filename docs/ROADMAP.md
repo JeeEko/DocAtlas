@@ -26,6 +26,8 @@ Semantic index, GraphQL parser, enterprise import, headless discovery — see is
 
 | ID | Item |
 |----|------|
-| CN.1 | `--cursor-native` + automation prompts | On cursor branch |
-| CN.2 | Marketplace plugin build + publish | Planned |
-| CN.3 | Rebase cursor branch after each `main` tag | Ongoing maintainer task |
+| CN.1 | `--cursor-native` + automation prompts | Shipped |
+| CN.2 | Marketplace plugin build + local install | Shipped (`scripts/build-cursor-plugin.mjs`) |
+| CN.3 | Marketplace publish | Manifest ready; needs maintainer credentials |
+| CN.4 | Automation docs (`post-merge-sync.md`) | Shipped — see [CURSOR_NATIVE.md](CURSOR_NATIVE.md) |
+| CN.5 | Rebase cursor branch after each `main` tag | Ongoing maintainer task |

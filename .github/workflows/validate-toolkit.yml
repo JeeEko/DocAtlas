@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, 'cursor/**']
   pull_request:
-    branches: [main]
+    branches: [main, 'cursor/**']
 
 jobs:
   validate:
@@ -38,7 +38,7 @@ jobs:
           node scripts/test-health.mjs
 
       - name: Test cursor-native (Cursor Platform branch only)
-        if: github.ref == 'refs/heads/cursor/cursor-native-95c0'
+        if: startsWith(github.ref, 'refs/heads/cursor/') || startsWith(github.base_ref, 'cursor/')
         run: |
           node scripts/test-cursor-native.mjs
           node scripts/build-cursor-plugin.mjs
