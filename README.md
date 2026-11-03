@@ -92,11 +92,11 @@ docatlas init  →  docatlas refine  →  /docatlas (discovery phase)  →  doca
 
 ## Commands
 
-See [docs/COMMANDS.md](docs/COMMANDS.md) for the full CLI vs slash command reference.
+See [docs/COMMANDS.md](docs/COMMANDS.md) for the full CLI vs slash command reference. Use DocAtlas with [Context7](docs/CONTEXT7.md) for internal vs library docs.
 
 | **`/docatlas`** | Full journey — init, refine, discovery, drift |
 | `docatlas query` | Search project docs at runtime |
-| `docatlas setup` | Wire MCP for Cursor / Claude / VS Code |
+| `docatlas setup` | Wire MCP for Cursor / Claude / VS Code (auto-installs MCP deps) |
 | `docatlas update` | Git diff → impacted docs (then skill-update in Cursor) |
 | `docatlas doctor --score` | Kit health + 0–100 doc quality score |
 | `docatlas install-explorer` | IDE viewer for doc-atlas/ |

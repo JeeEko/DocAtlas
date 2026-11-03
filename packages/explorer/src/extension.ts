@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { readHealthScoreLabel } from './services/docatlas-cli';
 import { searchDocs } from './services/search';
 import { readFreshness } from './services/freshness';
 import { parseEvidenceLinks } from './services/evidence';
@@ -35,8 +36,7 @@ async function searchCommand(provider: DocAtlasTreeProvider) {
     vscode.window.showWarningMessage('No doc-atlas/ found — run docatlas init');
     return;
   }
-  const docsDir = path.join(root, DOCS);
-  const results = searchDocs(docsDir, root, query, 15);
+  const results = searchDocs(root, query, 15);
   if (!results.length) {
     vscode.window.showInformationMessage('No matching documentation found.');
     return;
@@ -121,9 +121,12 @@ class DocAtlasTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
       const info = readFreshness(root);
       const freshnessItem = new vscode.TreeItem(`Freshness: ${info.label}`, vscode.TreeItemCollapsibleState.None);
       freshnessItem.command = { command: 'docatlas.showFreshness', title: 'Show freshness' };
+      const healthLabel = readHealthScoreLabel(root);
+      const healthItem = new vscode.TreeItem(healthLabel, vscode.TreeItemCollapsibleState.None);
+      healthItem.tooltip = 'From docatlas doctor --score (documentation quality 0–100)';
       const searchItem = new vscode.TreeItem('Search docs…', vscode.TreeItemCollapsibleState.None);
       searchItem.command = { command: 'docatlas.search', title: 'Search' };
-      return [freshnessItem, searchItem, ...this.listDocs(root, path.join(root, DOCS))];
+      return [freshnessItem, healthItem, searchItem, ...this.listDocs(root, path.join(root, DOCS))];
     }
 
     const base = element.resourceUri?.fsPath;

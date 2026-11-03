@@ -1,6 +1,6 @@
 {
   "name": "@jeeeko/docatlas-mcp",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "DocAtlas MCP server — query project documentation at runtime",
   "type": "module",
   "bin": {

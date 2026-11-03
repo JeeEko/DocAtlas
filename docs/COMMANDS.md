@@ -81,7 +81,7 @@ Use CLI steps individually for CI, scripts, or when you only need one automated 
 | First documentation pass in a project | **`/docatlas`** in Cursor |
 | Re-run full journey after major changes | **`/docatlas`** |
 | Answer question about this repo's architecture | `docatlas query` or MCP |
-| External library API docs | Context7 (not DocAtlas) |
+| External library API docs | Context7 (not DocAtlas) — see [CONTEXT7.md](CONTEXT7.md) |
 | Automated route tracing only | `docatlas refine` |
 | CI / pre-merge check | `docatlas drift` |
 | CI doc quality badge | `docatlas doctor --score` |

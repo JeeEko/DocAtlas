@@ -36,6 +36,7 @@ jobs:
         run: |
           node scripts/test-search.mjs
           node scripts/test-health.mjs
+          node scripts/test-setup-mcp.mjs
 
       - name: Test docatlas init on temp project
         run: |

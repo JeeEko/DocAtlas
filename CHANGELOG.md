@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0 — 2026-11-03
+
+- **`docatlas setup`** — auto-installs `packages/mcp` npm dependencies when missing; doctor notes if MCP deps absent
+- **[docs/CONTEXT7.md](docs/CONTEXT7.md)** — DocAtlas vs Context7 and dual MCP setup in Cursor
+- **Explorer** — health score in sidebar (`docatlas doctor --score`); search delegates to `docatlas query --json`
+
 ## 5.0.0 — 2026-09-12
 
 - **Owner config** — `includePaths`, `excludePaths`, `agentRules`, `analyzedVersions` in `.docatlas.json`
