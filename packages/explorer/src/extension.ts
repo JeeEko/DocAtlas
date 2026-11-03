@@ -18,7 +18,8 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('docatlas.search', () => searchCommand(provider)),
     vscode.commands.registerCommand('docatlas.openEvidence', (link: string) => openEvidence(link)),
     vscode.commands.registerCommand('docatlas.previewMermaid', (uri: vscode.Uri) => previewMermaid(uri)),
-    vscode.commands.registerCommand('docatlas.showFreshness', () => showFreshness())
+    vscode.commands.registerCommand('docatlas.showFreshness', () => showFreshness()),
+    vscode.commands.registerCommand('docatlas.openHtmlReport', () => openHtmlReport())
   );
 
   const watcher = vscode.workspace.createFileSystemWatcher(`**/${DOC_ATLAS}/**/*`);
@@ -99,6 +100,29 @@ function showFreshness() {
   vscode.window.showInformationMessage(`DocAtlas freshness: ${info.label}`);
 }
 
+async function openHtmlReport() {
+  const root = findDocAtlasRoot();
+  if (!root) {
+    vscode.window.showWarningMessage('No doc-atlas/ found — run docatlas init');
+    return;
+  }
+  const indexHtml = path.join(root, DOC_ATLAS, 'report', 'index.html');
+  if (!fs.existsSync(indexHtml)) {
+    const run = await vscode.window.showInformationMessage(
+      'No HTML report yet. Generate with docatlas report?',
+      'Run in terminal',
+      'Cancel'
+    );
+    if (run === 'Run in terminal') {
+      const term = vscode.window.createTerminal('DocAtlas report');
+      term.show();
+      term.sendText('docatlas report --open');
+    }
+    return;
+  }
+  await vscode.env.openExternal(vscode.Uri.file(indexHtml));
+}
+
 class DocAtlasTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
   private _onDidChangeTreeData = new vscode.EventEmitter<void>();
   readonly onDidChangeTreeData = this._onDidChangeTreeData.event;
@@ -126,7 +150,9 @@ class DocAtlasTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
       healthItem.tooltip = 'From docatlas doctor --score (documentation quality 0–100)';
       const searchItem = new vscode.TreeItem('Search docs…', vscode.TreeItemCollapsibleState.None);
       searchItem.command = { command: 'docatlas.search', title: 'Search' };
-      return [freshnessItem, healthItem, searchItem, ...this.listDocs(root, path.join(root, DOCS))];
+      const reportItem = new vscode.TreeItem('Open HTML report…', vscode.TreeItemCollapsibleState.None);
+      reportItem.command = { command: 'docatlas.openHtmlReport', title: 'Open HTML report' };
+      return [freshnessItem, healthItem, searchItem, reportItem, ...this.listDocs(root, path.join(root, DOCS))];
     }
 
     const base = element.resourceUri?.fsPath;

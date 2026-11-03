@@ -30,6 +30,7 @@ docatlas drift --strict
    - Placeholders (`TODO`, `TBD`) remaining
    - Stale or empty sections
 4. Fix all reported issues in doc files, then re-run `docatlas drift` until clean (or list unresolved items with reason).
+5. Optionally refresh the HTML portal for stakeholders: `docatlas report` (opens `doc-atlas/report/index.html`).
 
 ## Do not
 

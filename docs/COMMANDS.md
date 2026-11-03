@@ -66,6 +66,7 @@ Run from your project root after [installing DocAtlas](INSTALL.md).
 | `docatlas setup` | Wire MCP + rules for Cursor / Claude / VS Code |
 | `docatlas doctor` | Verify kit health; `--score` for 0–100 health metric |
 | `docatlas drift` | Check required docs exist and flag gaps |
+| `docatlas report` | Build HTML portal in `doc-atlas/report/`; `--json` for snapshot |
 | `docatlas install-explorer` | Build and install Explorer VSIX |
 | `docatlas version` | Show installed toolkit version |
 | `docatlas help` | Show CLI usage |
@@ -85,6 +86,7 @@ Use CLI steps individually for CI, scripts, or when you only need one automated 
 | Automated route tracing only | `docatlas refine` |
 | CI / pre-merge check | `docatlas drift` |
 | CI doc quality badge | `docatlas doctor --score` |
+| Share docs with stakeholders in a browser | `docatlas report` → open `doc-atlas/report/index.html` |
 | Bootstrap without Cursor | `docatlas init` then CLI steps |
 
 ---

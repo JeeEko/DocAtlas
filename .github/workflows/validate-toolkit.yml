@@ -36,6 +36,11 @@ jobs:
         run: |
           node scripts/test-search.mjs
           node scripts/test-health.mjs
+
+      - name: Test report snapshot and HTML
+        run: |
+          node scripts/test-report-snapshot.mjs
+          node scripts/test-report-html.mjs
           node scripts/test-setup-mcp.mjs
 
       - name: Test docatlas init on temp project
