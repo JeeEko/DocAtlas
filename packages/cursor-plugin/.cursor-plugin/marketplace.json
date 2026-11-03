@@ -1,0 +1,16 @@
+{
+  "name": "docatlas-cursor-platform",
+  "owner": { "name": "JeeEko" },
+  "plugins": [
+    {
+      "name": "docatlas",
+      "description": "DocAtlas Cursor Platform",
+      "source": {
+        "source": "github",
+        "repo": "JeeEko/DocAtlas",
+        "ref": "cursor/cursor-native-95c0",
+        "path": "packages/cursor-plugin"
+      }
+    }
+  ]
+}

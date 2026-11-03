@@ -40,6 +40,8 @@ INIT OPTIONS
   --no-governance         Skip PR checklist and GOVERNANCE folder
   --scaffold-only         Copy templates only (no auto-draft)
   --taxonomy <tier>       standard (default) or enterprise doc tree
+  --cursor-native         Cursor Platform distribution (this branch only)
+  --with-github-actions   With --cursor-native: also copy GitHub workflow templates
 
 REFINE OPTIONS
   --journey-name <name>   Override journey name (default: from .docatlas.json)
@@ -110,6 +112,8 @@ function parseFlags(argv) {
     project: false,
     remove: false,
     agents: [],
+    cursorNative: false,
+    includeGitHubActions: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -135,6 +139,8 @@ function parseFlags(argv) {
     else if (a === '--cursor') flags.agents.push('cursor');
     else if (a === '--claude') flags.agents.push('claude');
     else if (a === '--vscode') flags.agents.push('vscode');
+    else if (a === '--cursor-native') flags.cursorNative = true;
+    else if (a === '--with-github-actions') flags.includeGitHubActions = true;
     else if (a.startsWith('-')) console.error(`Unknown option: ${a}`);
     else positional.push(a);
   }

@@ -1,0 +1,16 @@
+{
+  "name": "docatlas",
+  "displayName": "DocAtlas Cursor Platform",
+  "description": "Living documentation — skills, MCP, Automations-first maintenance (cursor-native branch)",
+  "version": "5.0.0",
+  "author": {
+    "name": "DocAtlas",
+    "url": "https://github.com/JeeEko/DocAtlas"
+  },
+  "keywords": [
+    "documentation",
+    "architecture",
+    "mcp"
+  ],
+  "homepage": "https://github.com/JeeEko/DocAtlas/blob/cursor/cursor-native-95c0/docs/CURSOR_NATIVE.md"
+}

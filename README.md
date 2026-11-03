@@ -9,7 +9,7 @@ Repository: https://github.com/JeeEko/DocAtlas
 | Line | Branch | Use |
 |------|--------|-----|
 | **DocAtlas (default)** | `main` | Standard init, GitHub Actions, all editors |
-| **DocAtlas Cursor Platform** | `cursor/cursor-native-95c0` | Cursor plugin + Automations-first sync — **not merged to `main`** |
+| **DocAtlas Cursor Platform** | `cursor/cursor-native-95c0` | Branched **from** `main`; **never merged back** — [CURSOR_NATIVE.md](docs/CURSOR_NATIVE.md) on that branch |
 
 See [docs/BRANCHING.md](docs/BRANCHING.md).
 

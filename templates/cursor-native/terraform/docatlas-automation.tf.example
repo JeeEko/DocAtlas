@@ -1,0 +1,2 @@
+# cursor_platform_workflow example — see Cursor Terraform provider docs.
+# prompt = file("${path.module}/../prompts/post-merge-sync.md")
