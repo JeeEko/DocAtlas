@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.2.0 — 2026-11-03
+
+- **`docatlas report`** — HTML documentation portal under `doc-atlas/report/` with dashboard, workflow page, and rendered markdown ([specs/002-docatlas-report/spec.md](specs/002-docatlas-report/spec.md))
+- **Snapshot JSON** — same run writes `snapshot.json` for CI and Explorer
+- **Init** — `.gitignore` entry for `doc-atlas/report/`; optional `docatlas-report.yml` workflow template
+- **Explorer 1.3.0** — **Open HTML report** command
+
 ## 5.1.0 — 2026-11-03
 
 - **`docatlas setup`** — auto-installs `packages/mcp` npm dependencies when missing; doctor notes if MCP deps absent

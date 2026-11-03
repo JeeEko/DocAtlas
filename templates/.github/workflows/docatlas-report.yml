@@ -1,0 +1,31 @@
+name: DocAtlas HTML report
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'doc-atlas/**'
+      - '.cursor/**'
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install DocAtlas
+        run: npm install -g github:JeeEko/DocAtlas
+
+      - name: Generate report
+        run: docatlas report .
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docatlas-report
+          path: doc-atlas/report/
+          if-no-files-found: error

@@ -14,6 +14,7 @@ import { runDoctorCommand } from '../lib/doctor.js';
 import { runInstallExplorerCommand } from '../lib/install-explorer.js';
 import { runQueryCommand } from '../lib/query-cli.js';
 import { runSetupCommand, runSetupRemoveCommand } from '../lib/setup-cli.js';
+import { runReportCommand } from '../lib/report-cli.js';
 
 const args = process.argv.slice(2);
 
@@ -31,6 +32,7 @@ USAGE
   docatlas doctor [options]   Verify DocAtlas kit and required docs
   docatlas install-explorer   Build and install DocAtlas Explorer VSIX
   docatlas drift [options]    Check for missing or placeholder docs
+  docatlas report [options]   Build HTML documentation portal + snapshot JSON
   docatlas version            Show version
   docatlas help               Show this message
 
@@ -71,6 +73,12 @@ DRIFT OPTIONS
   --strict                Exit with error if issues found
   --semantic              Include route inventory and freshness checks
 
+REPORT OPTIONS
+  --json                  Print snapshot JSON (also written when generating HTML)
+  --out <dir>             Output directory (default: doc-atlas/report/)
+  --strict-drift          Exit non-zero when drift issues exist
+  --open                  Open index.html in default browser (best effort)
+
 INSTALL (once per machine)
   npm install -g github:JeeEko/DocAtlas
 
@@ -84,6 +92,8 @@ EXAMPLES
   /docatlas               # Cursor — full journey (init → refine → discovery → drift)
   docatlas doctor --score
   docatlas drift
+  docatlas report
+  docatlas report --json
 
 More: https://github.com/JeeEko/DocAtlas
 `);
@@ -110,6 +120,9 @@ function parseFlags(argv) {
     project: false,
     remove: false,
     agents: [],
+    outDir: '',
+    open: false,
+    strictDrift: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -135,6 +148,9 @@ function parseFlags(argv) {
     else if (a === '--cursor') flags.agents.push('cursor');
     else if (a === '--claude') flags.agents.push('claude');
     else if (a === '--vscode') flags.agents.push('vscode');
+    else if (a === '--out') flags.outDir = argv[++i] ?? '';
+    else if (a === '--open') flags.open = true;
+    else if (a === '--strict-drift') flags.strictDrift = true;
     else if (a.startsWith('-')) console.error(`Unknown option: ${a}`);
     else positional.push(a);
   }
@@ -219,6 +235,16 @@ async function main() {
           console.log(`[drift] found ${issues.length} issue(s)`);
         }
         process.exit(exitCode);
+        break;
+      }
+      case 'report': {
+        const code = runReportCommand(projectRoot, {
+          json: flags.json,
+          outDir: flags.outDir || undefined,
+          open: flags.open,
+          strictDrift: flags.strictDrift,
+        });
+        process.exit(code);
         break;
       }
       case 'version':

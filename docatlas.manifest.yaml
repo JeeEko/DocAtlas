@@ -2,7 +2,7 @@
 # https://github.com/JeeEko/DocAtlas
 
 name: DocAtlas
-version: "5.0.0"
+version: "5.2.0"
 tagline: "Learn the project. Write it down. Keep it updated."
 repository: https://github.com/JeeEko/DocAtlas
 
@@ -17,6 +17,7 @@ cli:
     - setup
     - doctor
     - drift
+    - report
     - install-explorer
     - version
     - help

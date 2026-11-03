@@ -7,6 +7,16 @@ Welcome guide for new developers.
 > DocAtlas template — run every command yourself and upgrade tags to `[verified]`.
 > Toolkit: https://github.com/JeeEko/DocAtlas
 
+## Documentation portal [likely]
+
+After discovery and drift are in good shape, generate a browsable HTML report:
+
+```bash
+docatlas report
+```
+
+Open `doc-atlas/report/index.html` in a browser (generated output is gitignored by default). Re-run after major doc updates.
+
 ## Welcome [uncertain]
 
 TODO: Brief intro to the project and team expectations.
