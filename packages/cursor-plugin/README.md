@@ -1,5 +1,16 @@
 # DocAtlas Cursor Platform plugin
 
-Build: `node scripts/build-cursor-plugin.mjs` from repository root (on `cursor/cursor-native-95c0`).
+Build from repository root on `cursor/cursor-native-95c0`:
 
-Local test: copy built folder to `~/.cursor/plugins/local/docatlas/` and reload Cursor.
+```bash
+node scripts/build-cursor-plugin.mjs
+```
+
+Local test:
+
+```bash
+mkdir -p ~/.cursor/plugins/local/docatlas
+cp -a packages/cursor-plugin/. ~/.cursor/plugins/local/docatlas/
+```
+
+Reload Cursor. Marketplace metadata: `.cursor-plugin/marketplace.json`. Full maintainer steps: [docs/CURSOR_NATIVE.md](../../docs/CURSOR_NATIVE.md).
