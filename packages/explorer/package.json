@@ -2,7 +2,7 @@
   "name": "docatlas-explorer",
   "displayName": "DocAtlas Explorer",
   "description": "Browse doc-atlas documentation in VS Code and Cursor",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "JeeEko",
   "engines": {
     "vscode": "^1.85.0"
